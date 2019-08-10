@@ -1,0 +1,39 @@
+@import './variable';
+
+body {
+  background-color: $black;
+}
+#app {
+  margin: 0 auto;
+  width: 100vh;
+  height: 100vh;
+  > .header {
+    height: 10%;
+    color: $white;
+    font-size: 10vh;
+    text-align: center;
+  }
+  > .timer {
+    height: 75%;
+    overflow: hidden;
+    > .circle {
+      width: 60%;
+      padding-top: 60%;
+      border-radius: 50%;
+      margin: 7.5% auto;
+      background-color: $white;
+    }
+  }
+  > .footer {
+    height: 15%;
+  }
+
+  @media (max-aspect-ratio: 1/1) {
+    padding-top: calc(50vh - 50%);
+    width: 100vw;
+    height: 100vw;
+    > .header {
+      font-size: 10vw;
+    }
+  }
+}
