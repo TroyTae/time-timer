@@ -14,14 +14,52 @@ body {
     text-align: center;
   }
   > .timer {
-    height: 75%;
+    position: relative;
     overflow: hidden;
+    height: 75%;
     > .circle {
-      width: 60%;
-      padding-top: 60%;
+      width: 55%;
+      padding-top: 55%;
       border-radius: 50%;
-      margin: 7.5% auto;
+      margin: 10% auto;
       background-color: $white;
+    }
+    > .dot {
+      position: absolute;
+      width: 1%;
+      padding-top: 1%;
+      border-radius: 50%;
+      background-color: $gray;
+      &.m0 { top: 11%; left: 49.5%; }
+      &.m5 { top: 16.25%; left: 34.75%; }
+      &.m10 { top: 30.75%; left: 24.25%; }
+      &.m15 { top: 49.5%; left: 20.75%; }
+      &.m20 { top: 67.75%; left: 24.25%; }
+      &.m25 { top: 82%; left: 34.5%; }
+      &.m30 { top: 87.5%; left: 49.5%; }
+      &.m35 { top: 82%; left: 64.25%; }
+      &.m40 { top: 67.75%; left: 74.5%; }
+      &.m45 { top: 49.5%; left: 78%; }
+      &.m50 { top: 30.75%; left: 74.5%; }
+      &.m55 { top: 16.25%; left: 64.25%; }
+    }
+    > .min {
+      position: absolute;
+      font-size: 6vh;
+      color: $gray;
+      &:active { color: $white; }
+      &.m0 { top: 1.5%; left: 48.25%; }
+      &.m5 { top: 7.5%; left: 31.5%; }
+      &.m10 { top: 25%; left: 17%; }
+      &.m15 { top: 45%; left: 13.5%; }
+      &.m20 { top: 67%; left: 17%; }
+      &.m25 { top: 83.5%; left: 30.5%; }
+      &.m30 { top: 88.5%; left: 46.25%; }
+      &.m35 { top: 83.5%; left: 63%; }
+      &.m40 { top: 67%; left: 75%; }
+      &.m45 { top: 45%; left: 80%; }
+      &.m50 { top: 25%; left: 76.5%; }
+      &.m55 { top: 7.5%; left: 65%; }
     }
   }
   > .footer {
@@ -34,6 +72,11 @@ body {
     height: 100vw;
     > .header {
       font-size: 10vw;
+    }
+    > .timer {
+      > .min {
+        font-size: 6vw;
+      }
     }
   }
 }

@@ -40,3 +40,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+html {
+  touch-action: manipulation;
+}
+button {
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+}
