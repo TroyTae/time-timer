@@ -1,4 +1,3 @@
 import './reset.scss';
 import './index.scss';
-
-console.log('Index is started!');
+import './clock/clock';

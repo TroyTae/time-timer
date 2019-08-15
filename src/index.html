@@ -16,20 +16,50 @@
       <header class="header">
         60 Min Timer
       </header>
-      <section class="timer">
-        <div class="dot m0"></div><div class="dot m5"></div><div class="dot m10"></div>
-        <div class="dot m15"></div><div class="dot m20"></div><div class="dot m25"></div>
-        <div class="dot m30"></div><div class="dot m35"></div><div class="dot m40"></div>
-        <div class="dot m45"></div><div class="dot m50"></div><div class="dot m55"></div>
-        <button class="min m0">0</button><button class="min m5">5</button>
-        <button class="min m10">10</button><button class="min m15">15</button>
-        <button class="min m20">20</button><button class="min m25">25</button>
-        <button class="min m30">30</button><button class="min m35">35</button>
-        <button class="min m40">40</button><button class="min m45">45</button>
-        <button class="min m50">50</button><button class="min m55">55</button>
+      <section id="clock">
         <div class="circle"></div>
       </section>
-      <footer class="footer"></footer>
+      <footer class="footer">
+        <button class="reset"></button>
+        <label class="time min">
+          <span class="text">45</span>
+          <select class="select">
+            <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+            <option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+            <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option>
+            <option>20</option><option>21</option><option>22</option><option>23</option><option>24</option>
+            <option>25</option><option>26</option><option>27</option><option>28</option><option>29</option>
+            <option>30</option><option>31</option><option>32</option><option>33</option><option>34</option>
+            <option>35</option><option>36</option><option>37</option><option>38</option><option>39</option>
+            <option>40</option><option>41</option><option>42</option><option>43</option><option>44</option>
+            <option>45</option><option>46</option><option>47</option><option>48</option><option>49</option>
+            <option>50</option><option>51</option><option>52</option><option>53</option><option>54</option>
+            <option>55</option><option>56</option><option>57</option><option>58</option><option>59</option>
+          </select>
+        </label>
+        <label class="time colon">
+          <span class="text">:</span>
+        </label>
+        <label class="time sec">
+          <select class="select">
+            <span class="text">15</span>
+            <option>0</option>
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+            <option>25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+            <option>55</option>
+          </select>
+        </label>
+        <button class="start"></button>
+      </footer>
     </article>
   </body>
 </html>
