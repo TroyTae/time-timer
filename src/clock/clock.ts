@@ -9,13 +9,13 @@ if (clock) {
     // Insert minute dot
     temp.innerHTML = `<div class="dot m${min}"></div>`;
     const dot = temp.children[0];
-    clock.insertAdjacentElement('beforeend', dot);
+    clock.appendChild(dot);
     // Insert minute hand
     temp.innerHTML = `<button class="min m${min}">${min}</button>`;
     const hand = temp.children[0];
     hand.addEventListener('click', () => {
       console.log('Click Minute Hand');
     });
-    clock.insertAdjacentElement('beforeend', hand);
+    clock.appendChild(hand);
   });
 }

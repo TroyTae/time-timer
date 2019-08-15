@@ -1,0 +1,23 @@
+@import '../variable';
+
+#timer {
+  text-align: center;
+  height: 15%;
+  > .btn {
+    width: 15%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1.15vh solid $orange;
+    background: no-repeat 50% / 80%;
+    transition: opacity 100ms ease;
+    &:active { opacity: 0.6; }
+    &.reset { background-image: url(./images/replay.svg); }
+    &.start { background-image: url(./images/start.svg); }
+    &.pause { background-image: url(./images/pause.svg); }
+  }
+  @media (max-aspect-ratio: 1/1) {
+    > .btn {
+      border-width: 1.15vw;
+    }
+  }
+}
