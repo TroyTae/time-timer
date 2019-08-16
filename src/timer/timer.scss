@@ -2,22 +2,41 @@
 
 #timer {
   text-align: center;
-  height: 15%;
+  height: 12.5%;
+  > .time, > .btn {
+    vertical-align: top;
+  }
+  > .time {
+    color: $white;
+    font-size: 12.5vh;
+  }
   > .btn {
-    width: 15%;
+    width: 12.5%;
     height: 100%;
     border-radius: 50%;
-    border: 1.15vh solid $orange;
+    border: 1vh solid $orange;
     background: no-repeat 50% / 80%;
     transition: opacity 100ms ease;
     &:active { opacity: 0.6; }
-    &.reset { background-image: url(./images/replay.svg); }
-    &.start { background-image: url(./images/start.svg); }
-    &.pause { background-image: url(./images/pause.svg); }
+    &.reset {
+      margin-right: 5%;
+      background-image: url(./images/replay.svg);
+    }
+    &.start {
+      margin-left: 5%;
+      background-image: url(./images/start.svg);
+    }
+    &.pause {
+      margin-left: 5%;
+      background-image: url(./images/pause.svg);
+    }
   }
   @media (max-aspect-ratio: 1/1) {
+    > .time {
+      font-size: 12.5vw;
+    }
     > .btn {
-      border-width: 1.15vw;
+      border-width: 1vw;
     }
   }
 }

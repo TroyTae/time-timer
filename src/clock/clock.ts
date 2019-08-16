@@ -1,9 +1,10 @@
 import './clock.scss';
 
-const temp = document.createElement('div');
 const clock = document.getElementById('clock');
 
 if (clock) {
+  const temp = document.createElement('div');
+
   Array(12).fill(null).forEach((v, i) => {
     const min = i * 5;
     // Insert minute dot
