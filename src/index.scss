@@ -5,9 +5,8 @@
   width: 100vh;
   height: 100vh;
   > .header {
-    height: 10%;
     color: $white;
-    font-size: 10vh;
+    font-size: 5vh;
     text-align: center;
   }
 
@@ -16,7 +15,7 @@
     width: 100vw;
     height: 100vw;
     > .header {
-      font-size: 10vw;
+      font-size: 5vw;
     }
   }
 }
