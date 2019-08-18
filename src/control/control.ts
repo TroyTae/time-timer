@@ -1,4 +1,6 @@
 import './control.scss';
+
+import './timer';
 import {renderHTML} from '../util/element';
 
 const control = document.getElementById('timer');

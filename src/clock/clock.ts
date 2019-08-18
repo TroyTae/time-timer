@@ -1,5 +1,5 @@
 import './clock.scss';
-import './timer/timer';
+
 import {renderHTML} from '../util/element';
 
 const clock = document.getElementById('clock');
