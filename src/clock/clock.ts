@@ -1,19 +1,17 @@
 import './clock.scss';
+import {renderHTML} from '../util/element';
 
 const clock = document.getElementById('clock');
 
 if (clock) {
   // Minute Display
-  const temp = document.createElement('div');
   Array(12).fill(null).forEach((v, i) => {
     const min = i * 5;
     // Insert minute dot
-    temp.innerHTML = `<div class="dot m${min}"></div>`;
-    const dot = temp.children[0];
+    const dot = renderHTML(`<div class="dot m${min}"></div>`);
     clock.appendChild(dot);
     // Insert minute hand
-    temp.innerHTML = `<span class="min m${min}">${min}</span>`;
-    const hand = temp.children[0];
+    const hand = renderHTML(`<span class="min m${min}">${min}</span>`);
     hand.addEventListener('click', () => {
       console.log('Click Minute Hand');
     });

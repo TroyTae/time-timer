@@ -1,26 +1,22 @@
 import './timer.scss';
+import {renderHTML} from '../util/element';
 
 const timer = document.getElementById('timer');
 
 if (timer) {
-  const temp = document.createElement('div');
-
   // Reset Button
-  temp.innerHTML = '<button class="btn reset"></button>';
-  const reset = temp.children[0];
+  const reset = renderHTML('<button class="btn reset"></button>');
   reset.addEventListener('click', () => {
     console.log('Reset Event!');
   });
   timer.appendChild(reset);
 
   // Time Text
-  temp.innerHTML = '<span class="time">15:25</span>';
-  const time = temp.children[0];
+  const time = renderHTML('<span class="time">15:25</span>');
   timer.appendChild(time);
 
   // Reset Button
-  temp.innerHTML = '<button class="btn start"></button>';
-  const start = temp.children[0];
+  const start = renderHTML('<button class="btn start"></button>');
   start.addEventListener('click', () => {
     console.log('Start Event!');
   });
