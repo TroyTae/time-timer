@@ -1,7 +1,7 @@
-import './reset.scss';
+import './static/reset.scss';
 import './index.scss';
 import './clock/clock';
-import './control/control';
+import './timer/timer';
 
 console.log(`
 Created by TroyTae

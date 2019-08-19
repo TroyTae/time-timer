@@ -1,6 +1,6 @@
 import './clock.scss';
 
-import {renderHTML} from '../util/element';
+import {renderHTML} from 'utility';
 
 const clock = document.getElementById('clock');
 
@@ -13,9 +13,6 @@ if (clock) {
     clock.appendChild(dot);
     // Insert minute hand
     const hand = renderHTML(`<span class="min m${min}">${min}</span>`);
-    hand.addEventListener('click', () => {
-      console.log('Click Minute Hand');
-    });
     clock.appendChild(hand);
   });
 }

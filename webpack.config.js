@@ -13,6 +13,9 @@ module.exports = (env, arg) => {
       crossOriginLoading: false
     },
     resolve: {
+      alias: {
+        "utility": Path.resolve(__dirname, 'src/utility')
+      },
       extensions: [".js", ".ts"]
     },
     module: {
@@ -49,7 +52,7 @@ module.exports = (env, arg) => {
       }),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
-        favicon: "./src/favicon.ico",
+        favicon: "./src/static/favicon.ico",
         minify: {
           collapseBooleanAttributes: true,
           collapseInlineTagWhitespace: true,

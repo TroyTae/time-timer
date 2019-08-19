@@ -1,9 +1,14 @@
-import './control.scss';
+import './timer.scss';
 
-import './timer';
-import {renderHTML} from '../util/element';
+import {draw, resize} from './reminder';
+import {renderHTML} from 'utility';
 
 const control = document.getElementById('timer');
+
+window.addEventListener('resize', () => {
+  resize();
+  draw();
+});
 
 if (control) {
   // Reset Button

@@ -5,7 +5,10 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es3"
+    "target": "es3",
+    "paths": {
+      "utility": ["src/utility"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"],
