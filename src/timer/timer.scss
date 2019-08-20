@@ -1,6 +1,9 @@
 @import '../static/variable';
 
+$button-size: 7.5;
+$button-border-size: 0.5;
 $margin-of-button: 10%;
+$time-font-size: 6;
 
 #timer {
   text-align: center;
@@ -9,14 +12,14 @@ $margin-of-button: 10%;
   }
   > .time {
     color: $white;
-    font-size: 6vh;
+    font-size: $time-font-size + vh;
     line-height: 1;
   }
   > .btn {
-    width: 7.5vh;
-    height: 7.5vh;
+    width: $button-size + vh;
+    height: $button-size + vh;
     border-radius: 50%;
-    border: 0.5vh solid $orange;
+    border: ($button-border-size + vh) solid $orange;
     background: no-repeat 50% / 80%;
     transition: opacity 100ms ease;
     &:active { opacity: 0.6; }
@@ -35,12 +38,12 @@ $margin-of-button: 10%;
   }
   @media (max-aspect-ratio: 1/1) {
     > .time {
-      font-size: 6vw;
+      font-size: $time-font-size + vw;
     }
     > .btn {
-      width: 7.5vw;
-      height: 7.5vw;
-      border-width: 0.5vw;
+      width: $button-size + vw;
+      height: $button-size + vw;
+      border-width: $button-border-size + vw;
     }
   }
 }

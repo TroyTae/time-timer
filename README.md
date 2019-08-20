@@ -1,17 +1,19 @@
-# webpack-static-webpage-example
+# Time Timer
 
-## description
+## What is vision of time-timer?
 
-A simple example using webpack!  
-If you create a static web page, this is a good example for you.  
-Issue and PR are always welcome :)  
+Our mission is to improve lives through the visual measurement and management of time. -TIME TIMER-  
 
-## Installation
+## Do you wanna use time timer web version?
+
+https://troytae.github.io/time-timer/
+
+## Do you wanna run this code?
 
 ### Step1
 Clone this repository.
 ```
-git clone https://github.com/TroyTae/webpack-static-webpage-example.git
+https://github.com/TroyTae/time-timer.git
 ```
 
 ### Step2

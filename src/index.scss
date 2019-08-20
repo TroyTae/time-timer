@@ -1,21 +1,25 @@
 @import './static/variable';
 
+$size: 100;
+$header-font-size: 5;
+
 #app {
   margin: 0 auto;
-  width: 100vh;
-  height: 100vh;
+  width: $size + vh;
+  height: $size + vh;
   > .header {
     color: $white;
-    font-size: 5vh;
     text-align: center;
+    font-size: $header-font-size + vh;
+    margin-top: ($header-font-size / 10) + vh;
   }
 
   @media (max-aspect-ratio: 1/1) {
-    padding-top: calc(50vh - 50vw);
-    width: 100vw;
-    height: 100vw;
+    padding-top: calc(#{$size / 2}vh - #{$size / 2}vw);
+    width: $size + vw;
+    height: $size + vw;
     > .header {
-      font-size: 5vw;
+      font-size: $header-font-size + vw;
     }
   }
 }

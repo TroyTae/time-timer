@@ -9,6 +9,7 @@ window.addEventListener('resize', () => {
   resize();
   draw();
 });
+resize(); draw();
 
 if (control) {
   // Reset Button
