@@ -1,3 +1,5 @@
+import {getRadian} from 'utility';
+
 const Reminder = (() => {
   const circle = document.querySelector('#clock > .circle');
 
@@ -10,18 +12,23 @@ const Reminder = (() => {
 
       return {
         draw: (degree: number) => {
-          context.clearRect(0, 0, canvas.width, canvas.height);
+          const w = canvas.width;
+          const h = canvas.height;
+          const cx = w / 2;
+          const cy = h / 2;
+
+          context.clearRect(0, 0, w, h);
           context.fillStyle = '#E31936';
           context.beginPath();
           context.arc(
-              canvas.width / 2,
-              canvas.height / 2,
-              canvas.width / 2,
-              Math.PI / 180 * 270,
-            Math.PI  / 180 * (degree - 90),
-              true
+            cx,
+            cy,
+            cx,
+            getRadian(270),
+            getRadian(degree - 90),
+            true
           );
-          context.lineTo(canvas.width / 2, canvas.height / 2);
+          context.lineTo(cx, cy);
           context.closePath();
           context.fill();
         },
