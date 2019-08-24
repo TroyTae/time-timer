@@ -9,15 +9,16 @@ const Reminder = (() => {
       circle.appendChild(canvas);
 
       return {
-        draw: () => {
+        draw: (degree: number) => {
+          context.clearRect(0, 0, canvas.width, canvas.height);
           context.fillStyle = '#E31936';
           context.beginPath();
           context.arc(
               canvas.width / 2,
               canvas.height / 2,
               canvas.width / 2,
-              Math.PI / 2 * 3,
-              Math.PI / 3 * 2,
+              Math.PI / 180 * 270,
+            Math.PI  / 180 * (degree - 90),
               true
           );
           context.lineTo(canvas.width / 2, canvas.height / 2);
@@ -28,6 +29,7 @@ const Reminder = (() => {
           canvas.width = circle.clientWidth;
           canvas.height = circle.clientHeight;
         },
+        getCanvas: () => canvas,
       };
     }
   }
@@ -36,3 +38,4 @@ const Reminder = (() => {
 
 export const draw = Reminder.draw;
 export const resize = Reminder.resize;
+export const getCanvas = Reminder.getCanvas;
