@@ -7,13 +7,14 @@ const control = document.getElementById('timer');
 
 if (control) {
   let isStarting = false;
-  let curSecond = 2700;
-  let curDegree = 90;
+  let curSecond = 900;
+  let curDegree = 270;
 
   // Reset Button
-  const reset = renderHTML('<button class="btn reset"></button>');
+  const reset = renderHTML('<button class="btn reset"></button>') as HTMLButtonElement;
   reset.addEventListener('click', () => {
-    console.log('Reset Event!');
+    draw(curDegree = 270);
+    setTime(curSecond = 900);
   });
   control.appendChild(reset);
 
@@ -27,14 +28,36 @@ if (control) {
 
   // Reset Button
   const start = renderHTML('<button class="btn start"></button>');
-  start.addEventListener('click', () => {
-    isStarting = true;
-    setInterval(() => {
-      --curSecond;
-      setTime(curSecond);
-      draw(360 - (curSecond / 10))
-    }, 1000);
-  });
+  start.addEventListener('click', (() => {
+    let key: number | null = null;
+    return () => {
+      if (isStarting && key) {
+        isStarting = false;
+        reset.disabled = false;
+        start.className = 'btn start';
+        clearInterval(key);
+      } else {
+        isStarting = true;
+        reset.disabled = true;
+        start.className = 'btn pause';
+        key = window.setInterval(() => {
+          --curSecond;
+          setTime(curSecond);
+          draw(360 - (curSecond / 10));
+          if (curSecond < 1 && key) {
+            clearInterval(key);
+            curDegree = 360;
+            curSecond = 0;
+            isStarting = false;
+            reset.disabled = false;
+            start.className = 'btn start';
+            draw(curDegree);
+            setTime(curSecond);
+          }
+        }, 1000);
+      }
+    };
+  })());
   control.appendChild(start);
 
   (() => {
@@ -53,7 +76,7 @@ if (control) {
         const y = e.offsetY - canvas.height / 2;
         const degree = getTanDegree(x, y);
 
-        if ((x < 0 && 0 < y) || (x < 0 && y < 0)) {
+        if ((x <= 0 && 0 <= y) || (x <= 0 && y <= 0)) {
           curDegree = degree + 270;
         } else {
           curDegree = degree + 90;

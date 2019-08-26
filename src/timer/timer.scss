@@ -23,6 +23,7 @@ $time-font-size: 6;
     background: no-repeat 50% / 80%;
     transition: opacity 100ms ease;
     &:active { opacity: 0.6; }
+    &:disabled { opacity: 0.4; }
     &.reset {
       margin-right: $margin-of-button;
       background-image: url(./images/replay.svg);
