@@ -30,12 +30,17 @@ if (control) {
   const start = renderHTML('<button class="btn start"></button>');
   start.addEventListener('click', (() => {
     let key: number | null = null;
-    return () => {
-      if (isStarting && key) {
-        isStarting = false;
-        reset.disabled = false;
-        start.className = 'btn start';
+    const stop = () => {
+      isStarting = false;
+      reset.disabled = false;
+      start.className = 'btn start';
+      if (key) {
         clearInterval(key);
+      }
+    };
+    return () => {
+      if (isStarting) {
+        stop();
       } else {
         isStarting = true;
         reset.disabled = true;
@@ -44,13 +49,10 @@ if (control) {
           --curSecond;
           setTime(curSecond);
           draw(360 - (curSecond / 10));
-          if (curSecond < 1 && key) {
-            clearInterval(key);
+          if (curSecond < 1) {
+            stop();
             curDegree = 360;
             curSecond = 0;
-            isStarting = false;
-            reset.disabled = false;
-            start.className = 'btn start';
             draw(curDegree);
             setTime(curSecond);
           }
@@ -76,7 +78,8 @@ if (control) {
         const y = e.offsetY - canvas.height / 2;
         const degree = getTanDegree(x, y);
 
-        if ((x <= 0 && 0 <= y) || (x <= 0 && y <= 0)) {
+        console.log(x, y);
+        if ((x < 0 && 0 <= y) || (x < 0 && y < 0)) {
           curDegree = degree + 270;
         } else {
           curDegree = degree + 90;
