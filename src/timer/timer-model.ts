@@ -2,6 +2,12 @@ const TimerModel = (() => {
     let seconds = 900;
     let degree = 270;
     return {
+      getSeconds() {
+        return seconds
+      },
+      getDegree() {
+        return degree
+      },
       setSeconds(sec: number) {
         seconds = sec;
         degree = 360 - sec / 10;
@@ -13,5 +19,7 @@ const TimerModel = (() => {
     };
 })();
 
+export const getSeconds = TimerModel.getSeconds;
+export const getDegree = TimerModel.getDegree;
 export const setSeconds = TimerModel.setSeconds;
 export const setDegree = TimerModel.setDegree;

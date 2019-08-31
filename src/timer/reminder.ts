@@ -1,4 +1,5 @@
 import {getRadian} from 'utility';
+import {getDegree} from './timer-model';
 
 const Reminder = (() => {
   const circle = document.querySelector('#clock > .circle');
@@ -11,7 +12,7 @@ const Reminder = (() => {
       circle.appendChild(canvas);
 
       return {
-        draw: (degree: number) => {
+        draw: () => {
           const w = canvas.width;
           const h = canvas.height;
           const cx = w / 2;
@@ -25,7 +26,7 @@ const Reminder = (() => {
             cy,
             cx,
             getRadian(270),
-            getRadian(degree - 90),
+            getRadian(getDegree() - 90),
             true
           );
           context.lineTo(cx, cy);
