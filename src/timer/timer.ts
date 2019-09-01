@@ -1,7 +1,8 @@
 import './timer.scss';
 
 import {renderHTML, getTanDegree} from 'utility';
-import {draw, resize, getCanvas} from './reminder';
+import {resize, getCanvas} from './reminder';
+import {getTimeText, setTimeText} from './time-text';
 import {getSeconds, setDegree, setSeconds} from './timer-model';
 
 const control = document.getElementById('timer');
@@ -12,21 +13,9 @@ if (control) {
   // Reset Button
   const reset = renderHTML('<button class="btn reset"></button>') as HTMLButtonElement;
   reset.addEventListener('click', () => {
-    setDegree(270);
     setSeconds(900);
-    draw();
-    setTime();
+    setTimeText();
   });
-  control.appendChild(reset);
-
-  // Time Text
-  const time = renderHTML('<span class="time"></span>');
-  const setTime = () => {
-    const sec = getSeconds();
-    let t = (tt: number) => `0${Math.floor(tt)}`.slice(-2);
-    time.textContent = `${t(sec / 60)}:${t(sec % 60)}`;
-  };
-  control.appendChild(time);
 
   // Reset Button
   const start = renderHTML('<button class="btn start"></button>');
@@ -50,18 +39,19 @@ if (control) {
         key = window.setInterval(() => {
           const sec = getSeconds();
           setSeconds(sec - 1);
-          setTime();
-          draw();
+          setTimeText();
           if (sec < 1) {
             stop();
             setSeconds(0);
-            draw();
-            setTime();
+            setTimeText();
           }
         }, 1000);
       }
     };
   })());
+
+  control.appendChild(reset);
+  control.appendChild(getTimeText());
   control.appendChild(start);
 
   (() => {
@@ -69,8 +59,7 @@ if (control) {
     const canvas = getCanvas();
     const initRemainder = () => {
       resize();
-      draw();
-      setTime();
+      setTimeText();
     };
 
     canvas.addEventListener('mousedown', () => (isDrawing = true));
@@ -85,8 +74,7 @@ if (control) {
         } else {
           setDegree(degree + 90);
         }
-        draw();
-        setTime();
+        setTimeText();
       }
     }, {
       passive: true
