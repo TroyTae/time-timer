@@ -1,3 +1,4 @@
+@import './static/mixin';
 @import './static/variable';
 
 $size: 100;
@@ -8,7 +9,7 @@ $header-font-size: 5;
   width: $size + vh;
   height: $size + vh;
   > .header {
-    color: $white;
+    @include theme-color(color, secondary);
     text-align: center;
     font-size: $header-font-size + vh;
     margin-top: ($header-font-size / 10) + vh;

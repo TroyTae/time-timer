@@ -1,4 +1,5 @@
 @import './variable';
+@import './mixin.scss';
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,5 +53,12 @@ button {
   background: none;
 }
 body {
-  background-color: $black;
+  transition: background-color 250ms linear;
+  @include theme-color(background-color, background);
+}
+:root {
+  --background: #{$black};
+  --on-background: #{$white};
+  --primary: #{$orange};
+  --secondary: #{$gray};
 }

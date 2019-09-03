@@ -1,3 +1,4 @@
+@import '../static/mixin';
 @import '../static/variable';
 
 $clock-size: 72;
@@ -12,7 +13,8 @@ $min-font-size: 4.5;
     height: $clock-size + vh;
     border-radius: 50%;
     margin: 6.5% auto;
-    background-color: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    @include theme-color(background-color, on-background);
     > canvas {
       position: absolute;
       top: 0;
@@ -24,7 +26,7 @@ $min-font-size: 4.5;
     width: 1%;
     padding-top: 1%;
     border-radius: 50%;
-    background-color: $gray;
+    @include theme-color(background-color, secondary);
     &.m0 { top: 5.5%; left: 49.5%; }
     &.m5 { top: 12%; left: 30%; }
     &.m10 { top: 28%; left: 17%; }
@@ -41,8 +43,8 @@ $min-font-size: 4.5;
   > .min {
     position: absolute;
     font-size: $min-font-size + vh;
-    color: $gray;
     transition: color 100ms ease;
+    @include theme-color(color, secondary);
     &.m0 { top: 0; left: 48.6%; }
     &.m5 { top: 7%; left: 28%; }
     &.m10 { top: 24%; left: 12.5%; }
