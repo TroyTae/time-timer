@@ -41,12 +41,12 @@ if (control) {
           const sec = getSeconds();
           setSeconds(sec - 1);
           setTimeText();
-          updateFavicon();
           if (sec < 1) {
             stop();
             setSeconds(0);
             setTimeText();
           }
+          updateFavicon();
         }, 1000);
       }
     };
