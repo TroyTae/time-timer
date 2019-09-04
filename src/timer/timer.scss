@@ -1,3 +1,4 @@
+@import '../static/mixin';
 @import '../static/variable';
 
 $button-size: 7.5;
@@ -11,7 +12,7 @@ $time-font-size: 6;
     vertical-align: bottom;
   }
   > .time {
-    color: $white;
+    @include theme-color(color, secondary);
     font-size: $time-font-size + vh;
     line-height: 1;
   }
@@ -19,7 +20,8 @@ $time-font-size: 6;
     width: $button-size + vh;
     height: $button-size + vh;
     border-radius: 50%;
-    border: ($button-border-size + vh) solid $orange;
+    border: ($button-border-size + vh) solid transparent;
+    @include theme-color(border-color, primary);
     background: no-repeat 50% / 80%;
     transition: opacity 100ms ease;
     &:active { opacity: 0.6; }
