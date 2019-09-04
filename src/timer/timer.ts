@@ -2,6 +2,7 @@ import './timer.scss';
 
 import {renderHTML, getTanDegree} from 'utility';
 import {resize, getCanvas} from './reminder';
+import {updateFavicon} from './reminder-favicon';
 import {getTimeText, setTimeText} from './time-text';
 import {getSeconds, setDegree, setSeconds} from './timer-model';
 
@@ -45,6 +46,7 @@ if (control) {
             setSeconds(0);
             setTimeText();
           }
+          updateFavicon();
         }, 1000);
       }
     };
@@ -60,6 +62,10 @@ if (control) {
     const initRemainder = () => {
       resize();
       setTimeText();
+    };
+    const destroy = () => {
+      isDrawing = false;
+      updateFavicon();
     };
 
     canvas.addEventListener('mousedown', () => (isDrawing = true));
@@ -79,9 +85,10 @@ if (control) {
     }, {
       passive: true
     });
-    canvas.addEventListener('mouseup', () => (isDrawing = false));
-    canvas.addEventListener('mouseleave', () => (isDrawing = false));
+    canvas.addEventListener('mouseup', destroy);
+    canvas.addEventListener('mouseleave', destroy);
     window.addEventListener('resize', initRemainder);
     initRemainder();
+    updateFavicon();
   })();
 }
