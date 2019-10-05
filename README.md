@@ -1,19 +1,19 @@
-# Time Timer
+# Timer
 
-## What is vision of time-timer?
+## What is vision of timer?
 
-Our mission is to improve lives through the visual measurement and management of time. -TIME TIMER-  
+Our mission is to improve lives through the visual measurement and management of time. -TIMER-  
 
-## Do you wanna use time timer web version?
+## Do you wanna use timer web version?
 
-https://troytae.github.io/time-timer/
+https://troytae.github.io/timer/
 
 ## Do you wanna run this code?
 
 ### Step1
 Clone this repository.
 ```
-https://github.com/TroyTae/time-timer.git
+https://github.com/TroyTae/timer.git
 ```
 
 ### Step2

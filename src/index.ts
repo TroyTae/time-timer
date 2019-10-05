@@ -27,5 +27,5 @@ root.innerHTML = `
 
 console.log(`
 Created by TroyTae
-https://github.com/TroyTae/time-timer
+https://github.com/TroyTae/timer
 `);
