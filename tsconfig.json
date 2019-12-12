@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "downlevelIteration": true,
-    "removeComments": true,
-    "resolveJsonModule": true,
     "strict": true,
     "target": "es3",
     "paths": {

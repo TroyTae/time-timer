@@ -1,7 +1,5 @@
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const Path = require("path");
 
 module.exports = (env, arg) => {
@@ -28,28 +26,13 @@ module.exports = (env, arg) => {
       }, {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          "style-loader",
           "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => [
-                require('autoprefixer')({
-                  grid: 'autoplace'
-                }),
-                require('cssnano')()
-              ]
-            }
-          },
           "sass-loader"
         ]
       }]
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: "[name].scss",
-        chunkFilename: "[id].scss"
-      }),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
         minify: {
@@ -58,8 +41,7 @@ module.exports = (env, arg) => {
           collapseWhitespace: true,
           removeComments: true
         }
-      }),
-      new HTMLInlineCSSWebpackPlugin()
+      })
     ],
     devServer: {
       port: 4200,

@@ -1,9 +1,5 @@
 # Timer
 
-## What is vision of timer?
-
-Our mission is to improve lives through the visual measurement and management of time. -TIMER-  
-
 ## Do you wanna use timer web version?
 
 https://troytae.github.io/timer/
@@ -34,4 +30,4 @@ If you wanna build, use this command.
 ```
 npm run build
 ```
-Then you can see builded files in `docs` directory.
+Then you can see generated files in `docs` directory.

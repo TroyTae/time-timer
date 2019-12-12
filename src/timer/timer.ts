@@ -2,8 +2,8 @@ import './timer.scss';
 
 import {renderHTML, getTanDegree} from 'utility';
 import {resize, getCanvas} from './reminder';
-import {updateFavicon} from './reminder-favicon';
-import {getTimeText, setTimeText} from './time-text';
+import {updateFavicon} from './favicon';
+import {getTimeText, setTimeText} from './display';
 import {getSeconds, setDegree, setSeconds} from './timer-model';
 
 const control = document.getElementById('timer');
