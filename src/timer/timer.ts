@@ -1,4 +1,5 @@
 import './timer.scss';
+import spaces from 'one-spaces';
 
 import {renderHTML, getTanDegree} from 'utility';
 import {resize, getCanvas} from './reminder';
@@ -25,7 +26,7 @@ if (control) {
     const stop = () => {
       isStarting = false;
       reset.disabled = false;
-      start.className = 'btn start';
+      start.className = spaces('btn', 'start');
       if (key) {
         clearInterval(key);
       }
@@ -36,7 +37,7 @@ if (control) {
       } else {
         isStarting = true;
         reset.disabled = true;
-        start.className = 'btn pause';
+        start.className = spaces('btn', 'pause');
         key = window.setInterval(() => {
           const sec = getSeconds();
           setSeconds(sec - 1);
