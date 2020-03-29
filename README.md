@@ -1,33 +1,35 @@
 # Timer
 
-## Do you wanna use timer web version?
+## Description
 
-https://troytae.github.io/timer/
+Web timer inspired by TIME TIMER
 
-## Do you wanna run this code?
+## Demo
+
+<img alt="demo" src="./demo.png" width="400" />  
+
+Website: https://troytae.github.io/timer/  
+
+## Installation
 
 ### Step1
-Clone this repository.
+
+Clone this repository
 ```
 https://github.com/TroyTae/timer.git
 ```
 
 ### Step2
-Install npm modules.
+
+Install npm modules
 *(If you are not install npm, do it first)*
 ```
 npm install
 ```
 
 ### Step3
-If you wanna start server, use this command.
+
+Run server with this command, then you can go to http://localhost:4200 in you browser.
 ```
 npm run start
 ```
-Then you can open this url(http://localhost:4200) in you browser.
-
-If you wanna build, use this command.
-```
-npm run build
-```
-Then you can see generated files in `docs` directory.
