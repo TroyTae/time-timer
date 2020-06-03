@@ -1,40 +1,41 @@
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const Path = require("path");
+const fs  = require('fs-extra');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
+const distDir = 'docs';
 
 module.exports = (env, arg) => {
   const config = {
-    entry: "./src/index.ts",
+    entry: './src/index.ts',
     output: {
-      path: Path.join(process.cwd(), "docs"),
-      filename: "[name].[chunkhash].js",
+      path: path.join(process.cwd(), distDir),
+      filename: '[name].[chunkhash].js',
       crossOriginLoading: false
     },
     resolve: {
-      alias: {
-        "utility": Path.resolve(__dirname, 'src/utility')
-      },
-      extensions: [".js", ".ts"]
+      extensions: ['.js', '.ts'],
+      plugins: [new TsconfigPathsPlugin()]
     },
     module: {
       rules: [{
         test: /\.svg$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       }, {
         test: /\.ts$/,
-        loader: "ts-loader"
+        loader: 'ts-loader'
       }, {
         test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       }]
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        template: './src/index.html',
         minify: {
           collapseBooleanAttributes: true,
           collapseInlineTagWhitespace: true,
@@ -49,10 +50,8 @@ module.exports = (env, arg) => {
     },
   };
 
-  if (arg.mode === "production") {
-    config.plugins = config.plugins.concat([
-      new CleanWebpackPlugin()
-    ]);
+  if (arg.mode === 'production') {
+    fs.emptyDirSync(distDir);
   }
 
   return config;
