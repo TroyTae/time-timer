@@ -1,13 +1,3 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "strict": true,
-    "target": "es3",
-    "paths": {
-      "utility": ["src/utility"]
-    }
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"],
-  "compileOnSave": false
+  "extends": "troyjs/tsconfig",
 }
