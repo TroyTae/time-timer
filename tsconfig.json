@@ -1,3 +1,6 @@
 {
   "extends": "troyjs/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "src"
+  }
 }

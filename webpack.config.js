@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const distDir = 'docs';
+const distDir = 'dist';
 
 module.exports = (env, arg) => {
   const config = {
