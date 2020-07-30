@@ -2,6 +2,7 @@ const fs  = require('fs-extra');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const {defaultHtmlWebpackPluginConfig} = require('troyjs/webpack');
 
 const distDir = 'dist';
 
@@ -35,13 +36,8 @@ module.exports = (env, arg) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
-        minify: {
-          collapseBooleanAttributes: true,
-          collapseInlineTagWhitespace: true,
-          collapseWhitespace: true,
-          removeComments: true
-        }
+        ...defaultHtmlWebpackPluginConfig,
+        template: './src/template.js'
       })
     ],
     devServer: {
