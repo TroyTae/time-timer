@@ -1,7 +1,7 @@
 import './timer.scss';
 import spaces from 'one-spaces';
 
-import {renderHTML, getTanDegree} from 'utility';
+import {getTanDegree} from 'utility';
 import {resize, getCanvas} from './reminder';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
@@ -12,15 +12,15 @@ const control = document.getElementById('timer');
 if (control) {
   let isStarting = false;
 
-  // Reset Button
-  const reset = renderHTML('<button class="btn reset"></button>') as HTMLButtonElement;
+  const reset = document.createElement('button');
+  reset.className = spaces('btn', 'reset');
   reset.addEventListener('click', () => {
     setSeconds(900);
     setTimeText();
   });
 
-  // Reset Button
-  const start = renderHTML('<button class="btn start"></button>');
+  const start = document.createElement('button');
+  start.className = spaces('btn', 'start');
   start.addEventListener('click', (() => {
     let key: number | null = null;
     const stop = () => {
