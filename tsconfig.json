@@ -1,6 +1,10 @@
 {
-  "extends": "troyjs/tsconfig",
   "compilerOptions": {
-    "baseUrl": "src"
-  }
+    "baseUrl": "src",
+    "strict": true,
+    "removeComments": true
+  },
+  "include": ["**/*"],
+  "exclude": [],
+  "compileOnSave": false
 }

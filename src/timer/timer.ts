@@ -1,4 +1,4 @@
-import './timer.scss';
+import * as styles from './timer.scss';
 import spaces from 'one-spaces';
 
 import {getTanDegree} from 'utility';
@@ -13,20 +13,20 @@ if (control) {
   let isStarting = false;
 
   const reset = document.createElement('button');
-  reset.className = spaces('btn', 'reset');
+  reset.className = spaces(styles.btn, styles.reset);
   reset.addEventListener('click', () => {
     setSeconds(900);
     setTimeText();
   });
 
   const start = document.createElement('button');
-  start.className = spaces('btn', 'start');
+  start.className = spaces(styles.btn, styles.start);
   start.addEventListener('click', (() => {
     let key: number | null = null;
     const stop = () => {
       isStarting = false;
       reset.disabled = false;
-      start.className = spaces('btn', 'start');
+      start.className = spaces(styles.btn, styles.start);
       if (key) {
         clearInterval(key);
       }
@@ -37,7 +37,7 @@ if (control) {
       } else {
         isStarting = true;
         reset.disabled = true;
-        start.className = spaces('btn', 'pause');
+        start.className = spaces(styles.btn, styles.pause);
         key = window.setInterval(() => {
           const sec = getSeconds();
           setSeconds(sec - 1);

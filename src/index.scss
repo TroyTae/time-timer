@@ -67,7 +67,7 @@ body {
   --secondary: #{$gray};
 }
 
-#app {
+:global #app {
   margin: 0 auto;
   width: $size + vh;
   height: $size + vh;

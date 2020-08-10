@@ -1,8 +1,9 @@
+import * as styles from './timer.scss';
 import {draw} from './reminder';
 import {getSeconds} from './timer-model';
 
 const timeText = document.createElement('span');
-timeText.className = 'time';
+timeText.className = styles.time;
 
 function twoDigits(seconds: number) {
   return `0${Math.floor(seconds)}`.slice(-2);

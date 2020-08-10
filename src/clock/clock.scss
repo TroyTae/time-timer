@@ -4,10 +4,10 @@
 $clock-size: 72;
 $min-font-size: 4.5;
 
-#clock {
+:global(#clock) {
   position: relative;
   overflow: hidden;
-  > .circle {
+  > :global(.circle) {
     position: relative;
     width: $clock-size + vh;
     height: $clock-size + vh;
@@ -60,7 +60,7 @@ $min-font-size: 4.5;
   }
 
   @media (max-aspect-ratio: 1/1) {
-    > .circle {
+    > :global(.circle) {
       width: $clock-size + vw;
       height: $clock-size + vw;
     }
