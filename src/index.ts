@@ -3,6 +3,7 @@ import './clock/clock';
 import './timer/timer';
 
 const root = document.createElement('style');
+
 root.innerHTML = `
   :root {
     --primary: #FF9500;
@@ -11,6 +12,8 @@ root.innerHTML = `
     --on-background: #FFF;
   }
 `;
+
+// TODO 별도 UI로 만들기
 (window as any).toggleColor = (() => {
   let toggled = false;
   return () => {

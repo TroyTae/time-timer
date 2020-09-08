@@ -1,5 +1,4 @@
-@import '/sass/mixin';
-@import '/sass/mixin';
+@use '/sass/mixin';
 
 $button-size: 7.5;
 $button-border-size: 0.5;
@@ -12,7 +11,7 @@ $time-font-size: 6;
     vertical-align: bottom;
   }
   > .time {
-    @include theme-color(color, secondary);
+    @include mixin.theme-color(color, secondary);
     font-size: $time-font-size + vh;
     line-height: 1;
   }
@@ -21,7 +20,7 @@ $time-font-size: 6;
     height: $button-size + vh;
     border-radius: 50%;
     border: ($button-border-size + vh) solid transparent;
-    @include theme-color(border-color, primary);
+    @include mixin.theme-color(border-color, primary);
     background: no-repeat 50% / 80%;
     transition: opacity 100ms ease;
     &:active { opacity: 0.6; }
