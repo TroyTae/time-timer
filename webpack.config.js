@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const {defaultHtmlWebpackPluginConfig} = require('troyjs/webpack');
 
-const distDir = 'dist';
+const distDir = 'docs';
 
 module.exports = (env, arg) => {
   const config = {

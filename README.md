@@ -8,4 +8,4 @@ Web timer inspired by TIME TIMER
 
 <img alt="demo" src="./demo.png" width="400" />  
 
-Website: https://troytae-time-timer.netlify.app/  
+Website: https://troytae.github.io/time-timer/  
