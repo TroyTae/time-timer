@@ -1,4 +1,4 @@
-import {getRadian} from 'utility';
+import {getRadian} from '/utility';
 import {getDegree} from './timer-model';
 
 const Reminder = (() => {

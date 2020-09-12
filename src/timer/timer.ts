@@ -1,7 +1,7 @@
 import * as styles from './timer.scss';
 import spaces from 'one-spaces';
 
-import {getTanDegree} from 'utility';
+import {getTanDegree} from '/utility';
 import {resize, getCanvas} from './reminder';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
