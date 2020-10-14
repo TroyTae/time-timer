@@ -1,6 +1,10 @@
-import './index.scss';
-import './clock/clock';
-import './timer/timer';
+import {
+  $,
+  TAG_NAME_ARTICLE,
+  TAG_NAME_HEADER,
+} from 'noliter';
+import * as styles from './index.scss';
+import Clock from './clock/clock';
 
 const root = document.createElement('style');
 
@@ -25,3 +29,15 @@ root.innerHTML = `
     toggled = !toggled;
   };
 })();
+
+document.body.appendChild(
+  $(TAG_NAME_ARTICLE)
+    .attrs('id', styles.app)
+    .append(
+      $(TAG_NAME_HEADER)
+        .attrs('id', styles.header)
+        .append('Time Timer'),
+      Clock(),
+    )
+    .dom
+);

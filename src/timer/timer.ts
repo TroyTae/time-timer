@@ -1,5 +1,12 @@
 import * as styles from './timer.scss';
 import spaces from 'one-spaces';
+import {
+  $,
+  ATTR_CLASS,
+  EVENT_TYPE_CLICK,
+  PROP_DISABLED,
+  TAG_NAME_BUTTON,
+} from 'noliter';
 
 import {getTanDegree} from '/utility';
 import {resize, getCanvas} from './reminder';
@@ -12,50 +19,52 @@ const control = document.getElementById('timer');
 if (control) {
   let isStarting = false;
 
-  const reset = document.createElement('button');
-  reset.className = spaces(styles.btn, styles.reset);
-  reset.addEventListener('click', () => {
-    setSeconds(900);
-    setTimeText();
-  });
+  const reset = $(TAG_NAME_BUTTON)
+    .attrs(ATTR_CLASS, spaces(styles.btn, styles.reset))
+    .events(EVENT_TYPE_CLICK, () => {
+      setSeconds(900);
+      setTimeText();
+    });
 
-  const start = document.createElement('button');
-  start.className = spaces(styles.btn, styles.start);
-  start.addEventListener('click', (() => {
-    let key: number | null = null;
-    const stop = () => {
-      isStarting = false;
-      reset.disabled = false;
-      start.className = spaces(styles.btn, styles.start);
-      if (key) {
-        clearInterval(key);
-      }
-    };
-    return () => {
-      if (isStarting) {
-        stop();
-      } else {
-        isStarting = true;
-        reset.disabled = true;
-        start.className = spaces(styles.btn, styles.pause);
-        key = window.setInterval(() => {
-          const sec = getSeconds();
-          setSeconds(sec - 1);
-          setTimeText();
-          if (sec < 1) {
-            stop();
-            setSeconds(0);
+  const start = $(TAG_NAME_BUTTON)
+    .attrs(ATTR_CLASS, spaces(styles.btn, styles.start))
+    .events(EVENT_TYPE_CLICK, (() => {
+      let key: number | null = null;
+      const stop = () => {
+        isStarting = false;
+        reset.props(PROP_DISABLED, false);
+        start.attrs(ATTR_CLASS, spaces(styles.btn, styles.start));
+        if (key) {
+          clearInterval(key);
+        }
+      };
+      return () => {
+        if (isStarting) {
+          stop();
+        } else {
+          isStarting = true;
+          reset.props(PROP_DISABLED, true);
+          start.attrs(ATTR_CLASS, spaces(styles.btn, styles.pause));
+          key = window.setInterval(() => {
+            const sec = getSeconds();
+            setSeconds(sec - 1);
             setTimeText();
-          }
-          updateFavicon();
-        }, 1000);
-      }
-    };
-  })());
+            if (sec < 1) {
+              stop();
+              setSeconds(0);
+              setTimeText();
+            }
+            updateFavicon();
+          }, 1000);
+        }
+      };
+    })());
 
-  control.appendChild(reset);
-  control.appendChild(getTimeText());
-  control.appendChild(start);
+  control.append(
+    reset.dom,
+    getTimeText(),
+    start.dom,
+  );
 
   (() => {
     let isDrawing = false;

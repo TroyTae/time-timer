@@ -3,68 +3,68 @@
 $clock-size: 72;
 $min-font-size: 4.5;
 
-:global(#clock) {
+#clock {
   position: relative;
   overflow: hidden;
-  > :global(.circle) {
-    position: relative;
-    width: $clock-size + vh;
-    height: $clock-size + vh;
-    border-radius: 50%;
-    margin: 6.5% auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    @include mixin.theme-color(background-color, on-background);
-    > canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-  > .dot {
-    position: absolute;
-    width: 1%;
-    padding-top: 1%;
-    border-radius: 50%;
-    @include mixin.theme-color(background-color, secondary);
-    &.m0 { top: 5.5%; left: 49.5%; }
-    &.m5 { top: 12%; left: 30%; }
-    &.m10 { top: 28%; left: 17%; }
-    &.m15 { top: 49.5%; left: 12.5%; }
-    &.m20 { top: 70.5%; left: 17%; }
-    &.m25 { top: 86.5%; left: 30%; }
-    &.m30 { top: 93%; left: 49.5%; }
-    &.m35 { top: 86.5%; left: 69%; }
-    &.m40 { top: 70.5%; left: 82%; }
-    &.m45 { top: 49.5%; left: 86.5%; }
-    &.m50 { top: 28%; left: 82%; }
-    &.m55 { top: 12%; left: 69%; }
-  }
-  > .min {
-    position: absolute;
-    font-size: $min-font-size + vh;
-    transition: color 100ms ease;
-    @include mixin.theme-color(color, secondary);
-    &.m0 { top: 0; left: 48.6%; }
-    &.m5 { top: 7%; left: 28%; }
-    &.m10 { top: 24%; left: 12.5%; }
-    &.m15 { top: 47.25%; left: 8%; }
-    &.m20 { top: 70.75%; left: 12%; }
-    &.m25 { top: 87.25%; left: 25.5%; }
-    &.m30 { top: 94%; left: 47.6%; }
-    &.m35 { top: 87%; left: 70%; }
-    &.m40 { top: 70.25%; left: 82.75%; }
-    &.m45 { top: 47.25%; left: 88%; }
-    &.m50 { top: 24%; left: 83.5%; }
-    &.m55 { top: 7%; left: 70.25%; }
-  }
+}
 
+#circle {
+  position: relative;
+  width: $clock-size + vh;
+  height: $clock-size + vh;
+  border-radius: 50%;
+  margin: 6.5% auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  @include mixin.theme-color(background-color, on-background);
+  > canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   @media (max-aspect-ratio: 1/1) {
-    > :global(.circle) {
-      width: $clock-size + vw;
-      height: $clock-size + vw;
-    }
-    > .min {
-      font-size: $min-font-size + vw;
-    }
+    width: $clock-size + vw;
+    height: $clock-size + vw;
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 1%;
+  padding-top: 1%;
+  border-radius: 50%;
+  @include mixin.theme-color(background-color, secondary);
+  &.m0 { top: 5.5%; left: 49.5%; }
+  &.m5 { top: 12%; left: 30%; }
+  &.m10 { top: 28%; left: 17%; }
+  &.m15 { top: 49.5%; left: 12.5%; }
+  &.m20 { top: 70.5%; left: 17%; }
+  &.m25 { top: 86.5%; left: 30%; }
+  &.m30 { top: 93%; left: 49.5%; }
+  &.m35 { top: 86.5%; left: 69%; }
+  &.m40 { top: 70.5%; left: 82%; }
+  &.m45 { top: 49.5%; left: 86.5%; }
+  &.m50 { top: 28%; left: 82%; }
+  &.m55 { top: 12%; left: 69%; }
+}
+
+.min {
+  position: absolute;
+  font-size: $min-font-size + vh;
+  transition: color 100ms ease;
+  @include mixin.theme-color(color, secondary);
+  &.m0 { top: 0; left: 48.6%; }
+  &.m5 { top: 7%; left: 28%; }
+  &.m10 { top: 24%; left: 12.5%; }
+  &.m15 { top: 47.25%; left: 8%; }
+  &.m20 { top: 70.75%; left: 12%; }
+  &.m25 { top: 87.25%; left: 25.5%; }
+  &.m30 { top: 94%; left: 47.6%; }
+  &.m35 { top: 87%; left: 70%; }
+  &.m40 { top: 70.25%; left: 82.75%; }
+  &.m45 { top: 47.25%; left: 88%; }
+  &.m50 { top: 24%; left: 83.5%; }
+  &.m55 { top: 7%; left: 70.25%; }
+  @media (max-aspect-ratio: 1/1) {
+    font-size: $min-font-size + vw;
   }
 }

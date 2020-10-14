@@ -24,23 +24,25 @@ body {
   --secondary: #{variable.$gray};
 }
 
-:global #app {
+#app {
   margin: 0 auto;
   width: $size + vh;
   height: $size + vh;
-  > .header {
-    @include mixin.theme-color(color, secondary);
-    text-align: center;
-    font-size: $header-font-size + vh;
-    margin-top: ($header-font-size / 10) + vh;
-  }
 
   @media (max-aspect-ratio: 1/1) {
     padding-top: calc(#{$size / 2}vh - #{$size / 2}vw);
     width: $size + vw;
     height: $size + vw;
-    > .header {
-      font-size: $header-font-size + vw;
-    }
+  }
+}
+
+#header {
+  @include mixin.theme-color(color, secondary);
+  text-align: center;
+  font-size: $header-font-size + vh;
+  margin-top: ($header-font-size / 10) + vh;
+
+  @media (max-aspect-ratio: 1/1) {
+    font-size: $header-font-size + vw;
   }
 }
