@@ -1,5 +1,6 @@
 import {
   $,
+  ATTR_ID,
   TAG_NAME_ARTICLE,
   TAG_NAME_HEADER,
 } from 'noliter';
@@ -32,10 +33,10 @@ root.innerHTML = `
 
 document.body.appendChild(
   $(TAG_NAME_ARTICLE)
-    .attrs('id', styles.app)
+    .attrs(ATTR_ID, styles.app)
     .append(
       $(TAG_NAME_HEADER)
-        .attrs('id', styles.header)
+        .attrs(ATTR_ID, styles.header)
         .append('Time Timer'),
       Clock(),
     )
