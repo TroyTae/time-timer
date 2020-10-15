@@ -5,7 +5,7 @@ import {
   TAG_NAME_HEADER,
 } from 'noliter';
 import * as styles from './index.scss';
-import Clock from './clock/clock';
+import clock from './clock/clock';
 
 const root = document.createElement('style');
 
@@ -38,7 +38,7 @@ document.body.appendChild(
       $(TAG_NAME_HEADER)
         .attrs(ATTR_ID, styles.header)
         .append('Time Timer'),
-      Clock(),
+      clock,
     )
     .dom
 );
