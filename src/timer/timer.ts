@@ -12,7 +12,7 @@ import {getTanDegree} from '/utility';
 import {resize, getCanvas} from './reminder';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
-import {getSeconds, setDegree, setSeconds} from './timer-model';
+import {getSeconds, setDegree, setSeconds} from '../time-data';
 
 const control = document.getElementById('timer');
 

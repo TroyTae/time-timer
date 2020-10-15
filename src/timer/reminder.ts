@@ -1,5 +1,5 @@
 import {getRadian} from '/utility';
-import {getDegree} from './timer-model';
+import {getDegree} from '../time-data';
 
 const Reminder = (() => {
   const circle = document.querySelector('#clock > .circle');

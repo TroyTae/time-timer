@@ -13,22 +13,25 @@ export default function Clock() {
   return $(TAG_NAME_SECTION)
     .attrs(ATTR_ID, styles.clock)
     .append(
-      $(TAG_NAME_DIV)
-        .attrs(ATTR_ID, styles.circle),
-      ...[...Array(12)].map((v, i) => (
-        $(TAG_NAME_DIV)
-          .attrs(ATTR_CLASS, spaces(
-            styles.dot,
-            styles[`m${i * 5}`],
-          ))
-      )),
-      ...[...Array(12)].map((v, i) => (
-        $(TAG_NAME_SPAN)
-          .attrs(ATTR_CLASS, spaces(
-            styles.min,
-            styles[`m${i * 5}`],
-          ))
-          .append(`${i * 5}`)
-      )),
+      $(TAG_NAME_DIV).attrs(ATTR_ID, styles.circle),
+      ...[...Array(12)].reduce((arr, v, i) => {
+        const min = i * 5;
+        arr.push(
+          $(TAG_NAME_DIV)
+            .attrs(ATTR_CLASS, spaces(
+              styles.dot,
+              styles[`m${min}`],
+            ))
+        );
+        arr.push(
+          $(TAG_NAME_SPAN)
+            .attrs(ATTR_CLASS, spaces(
+              styles.min,
+              styles[`m${min}`],
+            ))
+            .append(`${min}`)
+        );
+        return arr;
+      }, []),
     );
 }
