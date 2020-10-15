@@ -8,11 +8,14 @@ import {
   TAG_NAME_BUTTON,
 } from 'noliter';
 
-import {getTanDegree} from '/utility';
 import {resize, getCanvas} from './reminder';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
 import {getSeconds, setDegree, setSeconds} from '../time-data';
+
+function getTanDegree(x: number, y: number) {
+  return Math.atan(y / x) * 180 / Math.PI;
+}
 
 const control = document.getElementById('timer');
 

@@ -1,5 +1,8 @@
-import {getRadian} from '/utility';
 import {getDegree} from '../time-data';
+
+function getRadian(degree: number) {
+  return Math.PI / 180 * degree;
+}
 
 const Reminder = (() => {
   const circle = document.querySelector('#clock > .circle');
