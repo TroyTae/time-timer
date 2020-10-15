@@ -10,6 +10,6 @@
   },
   "scripts": {
     "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html -d docs --public-url ./"
+    "build": "parcel build src/index.html -d docs --public-url ./ --experimental-scope-hoisting"
   }
 }
