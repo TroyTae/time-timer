@@ -1,4 +1,4 @@
-import {getCanvas} from './reminder';
+import {getCanvas} from '../clock/red-circle';
 
 const canvas = getCanvas();
 const favicon = document.createElement('link');

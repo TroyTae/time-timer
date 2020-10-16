@@ -1,5 +1,5 @@
 import * as styles from './timer.scss';
-import {draw} from './reminder';
+import {draw} from '../clock/red-circle';
 import {getSeconds} from '../time-data';
 
 const timeText = document.createElement('span');

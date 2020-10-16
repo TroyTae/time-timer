@@ -6,6 +6,7 @@ import {
 } from 'noliter';
 import * as styles from './index.scss';
 import clock from './clock/clock';
+import {canvas} from './clock/red-circle';
 
 const root = document.createElement('style');
 
@@ -38,7 +39,8 @@ document.body.appendChild(
       $(TAG_NAME_HEADER)
         .attrs(ATTR_ID, styles.header)
         .append('Time Timer'),
-      clock,
+      clock
+        .append(canvas),
     )
     .dom
 );

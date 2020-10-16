@@ -8,7 +8,7 @@ import {
   TAG_NAME_BUTTON,
 } from 'noliter';
 
-import {resize, getCanvas} from './reminder';
+import {resize, getCanvas} from '../clock/red-circle';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
 import {getSeconds, setDegree, setSeconds} from '../time-data';
