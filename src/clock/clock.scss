@@ -16,11 +16,6 @@ $min-font-size: 4.5;
   margin: 6.5% auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   @include mixin.theme-color(background-color, on-background);
-  > canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
   @media (max-aspect-ratio: 1/1) {
     width: $clock-size + vw;
     height: $clock-size + vw;

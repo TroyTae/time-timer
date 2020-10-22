@@ -7,12 +7,15 @@ import {
   TAG_NAME_SECTION,
   TAG_NAME_SPAN,
 } from 'noliter';
-import * as styles from './clock.scss';
+import * as styles from './Clock.scss';
+import RedCircle from './RedCircle';
 
 export default $(TAG_NAME_SECTION)
   .attrs(ATTR_ID, styles.clock)
   .append(
-    $(TAG_NAME_DIV).attrs(ATTR_ID, styles.circle),
+    $(TAG_NAME_DIV)
+      .attrs(ATTR_ID, styles.circle)
+      .append(RedCircle),
     ...[...Array(12)].reduce((arr, v, i) => {
       const min = i * 5;
       arr.push(

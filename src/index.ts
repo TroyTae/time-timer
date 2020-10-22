@@ -1,12 +1,14 @@
 import {
   $,
   ATTR_ID,
+  EVENT_TYPE_RESIZE,
   TAG_NAME_ARTICLE,
   TAG_NAME_HEADER,
 } from 'noliter';
 import * as styles from './index.scss';
-import clock from './clock/clock';
-import {canvas} from './clock/red-circle';
+import Clock from './clock/Clock';
+import { resize } from './clock/RedCircle';
+import { setTimeText } from './timer/display';
 
 const root = document.createElement('style');
 
@@ -32,6 +34,11 @@ root.innerHTML = `
   };
 })();
 
+window.addEventListener(EVENT_TYPE_RESIZE, () => {
+  resize();
+  setTimeText();
+});
+
 document.body.appendChild(
   $(TAG_NAME_ARTICLE)
     .attrs(ATTR_ID, styles.app)
@@ -39,8 +46,13 @@ document.body.appendChild(
       $(TAG_NAME_HEADER)
         .attrs(ATTR_ID, styles.header)
         .append('Time Timer'),
-      clock
-        .append(canvas),
+      Clock,
     )
     .dom
 );
+
+// const favicon = $('link').attrs('rel', 'shortcut icon').dom;
+// document.head.appendChild(favicon);
+// function updateFavicon() {
+//   favicon.href = canvas.toDataURL();
+// }

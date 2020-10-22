@@ -8,7 +8,7 @@ import {
   TAG_NAME_BUTTON,
 } from 'noliter';
 
-import {resize, getCanvas} from '../clock/red-circle';
+import { resize } from '../clock/Clock';
 import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
 import {getSeconds, setDegree, setSeconds} from '../time-data';
@@ -71,11 +71,6 @@ if (control) {
 
   (() => {
     let isDrawing = false;
-    const canvas = getCanvas();
-    const initRemainder = () => {
-      resize();
-      setTimeText();
-    };
     const destroy = () => {
       isDrawing = false;
       updateFavicon();
@@ -100,8 +95,6 @@ if (control) {
     });
     canvas.addEventListener('mouseup', destroy);
     canvas.addEventListener('mouseleave', destroy);
-    window.addEventListener('resize', initRemainder);
-    initRemainder();
     updateFavicon();
   })();
 }
