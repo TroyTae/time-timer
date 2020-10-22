@@ -7,15 +7,9 @@ import {
   PROP_DISABLED,
   TAG_NAME_BUTTON,
 } from 'noliter';
-
-import { resize } from '../clock/Clock';
-import {updateFavicon} from './favicon';
 import {getTimeText, setTimeText} from './display';
 import {getSeconds, setDegree, setSeconds} from '../time-data';
 
-function getTanDegree(x: number, y: number) {
-  return Math.atan(y / x) * 180 / Math.PI;
-}
 
 const control = document.getElementById('timer');
 
@@ -24,14 +18,14 @@ if (control) {
 
   const reset = $(TAG_NAME_BUTTON)
     .attrs(ATTR_CLASS, spaces(styles.btn, styles.reset))
-    .events(EVENT_TYPE_CLICK, () => {
+    .on(EVENT_TYPE_CLICK, () => {
       setSeconds(900);
       setTimeText();
     });
 
   const start = $(TAG_NAME_BUTTON)
     .attrs(ATTR_CLASS, spaces(styles.btn, styles.start))
-    .events(EVENT_TYPE_CLICK, (() => {
+    .on(EVENT_TYPE_CLICK, (() => {
       let key: number | null = null;
       const stop = () => {
         isStarting = false;
@@ -57,7 +51,7 @@ if (control) {
               setSeconds(0);
               setTimeText();
             }
-            updateFavicon();
+            // updateFavicon();
           }, 1000);
         }
       };
@@ -68,33 +62,4 @@ if (control) {
     getTimeText(),
     start.dom,
   );
-
-  (() => {
-    let isDrawing = false;
-    const destroy = () => {
-      isDrawing = false;
-      updateFavicon();
-    };
-
-    canvas.addEventListener('mousedown', () => (isDrawing = true));
-    canvas.addEventListener('mousemove', (e) => {
-      if (isDrawing && !isStarting) {
-        const x = e.offsetX - canvas.width / 2;
-        const y = e.offsetY - canvas.height / 2;
-        const degree = getTanDegree(x, y);
-
-        if ((x < 0 && 0 <= y) || (x < 0 && y < 0)) {
-          setDegree(degree + 270);
-        } else {
-          setDegree(degree + 90);
-        }
-        setTimeText();
-      }
-    }, {
-      passive: true
-    });
-    canvas.addEventListener('mouseup', destroy);
-    canvas.addEventListener('mouseleave', destroy);
-    updateFavicon();
-  })();
 }

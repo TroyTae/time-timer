@@ -8,7 +8,6 @@ import {
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import { resize } from './clock/RedCircle';
-import { setTimeText } from './timer/display';
 
 const root = document.createElement('style');
 
@@ -36,7 +35,7 @@ root.innerHTML = `
 
 window.addEventListener(EVENT_TYPE_RESIZE, () => {
   resize();
-  setTimeText();
+  // setTimeText();
 });
 
 document.body.appendChild(

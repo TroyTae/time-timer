@@ -1,18 +1,57 @@
 import {
   $,
   ATTR_ID,
+  EVENT_TYPE_MOUSEDOWN,
+  EVENT_TYPE_MOUSELEAVE,
+  EVENT_TYPE_MOUSEMOVE,
+  EVENT_TYPE_MOUSEUP,
   TAG_NAME_CANVAS,
 } from 'noliter';
 import * as styles from './RedCircle.scss';
-import { getDegree } from '../time-data';
-
-const RedCircle = $(TAG_NAME_CANVAS).attrs(ATTR_ID, styles.canvas);
-const canvas = RedCircle.dom;
-const context = canvas.getContext('2d');
+import {
+  getDegree,
+  setDegree,
+  getDrawing,
+  setDrawing,
+  getStarting,
+} from '../time-data';
 
 function getRadian(degree: number) {
   return Math.PI / 180 * degree;
 }
+
+function getTanDegree(x: number, y: number) {
+  return Math.atan(y / x) * 180 / Math.PI;
+}
+
+function stopMoveCircle() {
+  setDrawing(false);
+  // updateFavicon();
+}
+
+const RedCircle = $(TAG_NAME_CANVAS)
+  .attrs(ATTR_ID, styles.canvas)
+  .on(EVENT_TYPE_MOUSEMOVE, (e) => {
+    if (getDrawing() && !getStarting()) {
+      const x = e.offsetX - canvas.width / 2;
+      const y = e.offsetY - canvas.height / 2;
+      const degree = getTanDegree(x, y);
+
+      if ((x < 0 && 0 <= y) || (x < 0 && y < 0)) {
+        setDegree(degree + 270);
+      } else {
+        setDegree(degree + 90);
+      }
+      draw();
+    }
+  }, {
+    passive: true
+  })
+  .on(EVENT_TYPE_MOUSEDOWN, () => setDrawing(true))
+  .on(EVENT_TYPE_MOUSEUP, stopMoveCircle)
+  .on(EVENT_TYPE_MOUSELEAVE, stopMoveCircle);
+const canvas = RedCircle.dom;
+const context = canvas.getContext('2d');
 
 export function draw() {
   const w = canvas.width;

@@ -1,6 +1,5 @@
 import * as styles from './timer.scss';
 import { draw } from '../clock/RedCircle';
-import { getSeconds } from '../time-data';
 
 const timeText = document.createElement('span');
 timeText.className = styles.time;
