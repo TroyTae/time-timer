@@ -51,7 +51,6 @@ if (control) {
               setSeconds(0);
               setTimeText();
             }
-            // updateFavicon();
           }, 1000);
         }
       };

@@ -15,19 +15,7 @@ import {
   setDrawing,
   getStarting,
 } from '../time-data';
-
-function getRadian(degree: number) {
-  return Math.PI / 180 * degree;
-}
-
-function getTanDegree(x: number, y: number) {
-  return Math.atan(y / x) * 180 / Math.PI;
-}
-
-function stopMoveCircle() {
-  setDrawing(false);
-  // updateFavicon();
-}
+import { updateFavicon } from './Favicon';
 
 const RedCircle = $(TAG_NAME_CANVAS)
   .attrs(ATTR_ID, styles.canvas)
@@ -44,14 +32,26 @@ const RedCircle = $(TAG_NAME_CANVAS)
       }
       draw();
     }
-  }, {
-    passive: true
-  })
+  }, { passive: true })
   .on(EVENT_TYPE_MOUSEDOWN, () => setDrawing(true))
-  .on(EVENT_TYPE_MOUSEUP, stopMoveCircle)
-  .on(EVENT_TYPE_MOUSELEAVE, stopMoveCircle);
+  .on(EVENT_TYPE_MOUSEUP, stopHandling)
+  .on(EVENT_TYPE_MOUSELEAVE, stopHandling);
 const canvas = RedCircle.dom;
 const context = canvas.getContext('2d');
+
+
+function getRadian(degree: number) {
+  return Math.PI / 180 * degree;
+}
+
+function getTanDegree(x: number, y: number) {
+  return Math.atan(y / x) * 180 / Math.PI;
+}
+
+function stopHandling() {
+  setDrawing(false);
+  updateFavicon();
+}
 
 export function draw() {
   const w = canvas.width;
