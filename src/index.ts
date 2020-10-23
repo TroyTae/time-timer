@@ -9,30 +9,8 @@ import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
-
-const root = document.createElement('style');
-
-root.innerHTML = `
-  :root {
-    --primary: #FF9500;
-    --secondary: #545456;
-    --background: #F2F2F7;
-    --on-background: #FFF;
-  }
-`;
-
-// TODO 별도 UI로 만들기
-(window as any).toggleColor = (() => {
-  let toggled = false;
-  return () => {
-    if (toggled) {
-      document.head.removeChild(root);
-    } else {
-      document.head.appendChild(root);
-    }
-    toggled = !toggled;
-  };
-})();
+// experimental
+import './dark-mode';
 
 document.head.appendChild(Favicon.dom);
 document.body.appendChild(
