@@ -1,17 +1,17 @@
-let isDrawing = false;
-let isStarting = false;
+let modified = false;
+let started = false;
 let seconds = 900;
 let degree = 270;
 
 
-export function getDrawing() { return isDrawing; }
-export function setDrawing(isDraw: boolean) {
-  isDrawing = isDraw;
+export function isModified() { return modified; }
+export function setModified(isModified: boolean) {
+  modified = isModified;
 }
 
-export function getStarting() { return isStarting; }
-export function setStarting(isStart: boolean) {
-  isStarting = isStart;
+export function isStarted() { return started; }
+export function setStarted(isStarted: boolean) {
+  started = isStarted;
 }
 
 export function getSeconds() { return seconds; }

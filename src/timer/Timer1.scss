@@ -19,23 +19,21 @@ $margin-of-button: 10%;
   transition: opacity 100ms ease;
   &:active { opacity: 0.6; }
   &:disabled { opacity: 0.4; }
+  &.reset {
+    margin-right: $margin-of-button;
+    background-image: url(./images/replay.svg);
+  }
+  &.start {
+    margin-left: $margin-of-button;
+    background-image: url(./images/start.svg);
+  }
+  &.pause {
+    margin-left: $margin-of-button;
+    background-image: url(./images/pause.svg);
+  }
   @media (max-aspect-ratio: 1/1) {
     width: $button-size + vw;
     height: $button-size + vw;
     border-width: $button-border-size + vw;
   }
-}
-
-#reset {
-  margin-right: $margin-of-button;
-  background-image: url(./images/replay.svg);
-}
-
-#start {
-  margin-left: $margin-of-button;
-  background-image: url(./images/start.svg);
-}
-#pause {
-  margin-left: $margin-of-button;
-  background-image: url(./images/pause.svg);
 }

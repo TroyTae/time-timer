@@ -11,16 +11,16 @@ import * as styles from './RedCircle.scss';
 import {
   getDegree,
   setDegree,
-  getDrawing,
-  setDrawing,
-  getStarting,
+  isModified,
+  setModified,
+  isStarted,
 } from '../TimeData';
 import { updateFavicon } from './Favicon';
 
 const RedCircle = $(TAG_NAME_CANVAS)
   .sa(ATTR_ID, styles.canvas)
   .on(EVENT_TYPE_MOUSEMOVE, (e) => {
-    if (getDrawing() && !getStarting()) {
+    if (isModified() && !isStarted()) {
       const x = e.offsetX - canvas.width / 2;
       const y = e.offsetY - canvas.height / 2;
       const degree = getTanDegree(x, y);
@@ -33,7 +33,7 @@ const RedCircle = $(TAG_NAME_CANVAS)
       draw();
     }
   }, { passive: true })
-  .on(EVENT_TYPE_MOUSEDOWN, () => setDrawing(true))
+  .on(EVENT_TYPE_MOUSEDOWN, () => setModified(true))
   .on(EVENT_TYPE_MOUSEUP, stopHandling)
   .on(EVENT_TYPE_MOUSELEAVE, stopHandling);
 const canvas = RedCircle.dom;
@@ -49,7 +49,7 @@ function getTanDegree(x: number, y: number) {
 }
 
 function stopHandling() {
-  setDrawing(false);
+  setModified(false);
   updateFavicon();
 }
 
