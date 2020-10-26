@@ -16,6 +16,7 @@ import {
   isStarted,
 } from '../TimeData';
 import { updateFavicon } from './Favicon';
+import { setTimeText } from '/timer/TimeText';
 
 const RedCircle = $(TAG_NAME_CANVAS)
   .sa(ATTR_ID, styles.canvas)
@@ -24,12 +25,12 @@ const RedCircle = $(TAG_NAME_CANVAS)
       const x = e.offsetX - canvas.width / 2;
       const y = e.offsetY - canvas.height / 2;
       const degree = getTanDegree(x, y);
-
       if ((x < 0 && 0 <= y) || (x < 0 && y < 0)) {
         setDegree(degree + 270);
       } else {
         setDegree(degree + 90);
       }
+      setTimeText();
       draw();
     }
   }, { passive: true })
