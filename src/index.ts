@@ -6,7 +6,7 @@ import {
   TAG_NAME_HEADER,
 } from 'noliter';
 import * as styles from './index.scss';
-import Clock from './clock/Clock1';
+import Clock from './clock/Clock';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
 // experimental

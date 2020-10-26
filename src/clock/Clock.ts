@@ -7,7 +7,7 @@ import {
   TAG_NAME_SECTION,
   TAG_NAME_SPAN,
 } from 'noliter';
-import * as styles from './Clock1.scss';
+import * as styles from './Clock.scss';
 import RedCircle from './RedCircle';
 
 export default $(TAG_NAME_SECTION)
