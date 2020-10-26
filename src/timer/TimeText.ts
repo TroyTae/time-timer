@@ -1,13 +1,13 @@
 import {
   $,
-  ATTR_CLASS,
+  ATTR_ID,
   PROP_TEXT_CONTENT,
   TAG_NAME_SPAN,
 } from 'noliter';
 import * as styles from './TimeText.scss';
 import { getSeconds } from '/TimeData';
 
-const TimeText = $(TAG_NAME_SPAN).sa(ATTR_CLASS, styles.timeText);
+const TimeText = $(TAG_NAME_SPAN).sa(ATTR_ID, styles.timeText);
 
 function twoDigits(seconds: number) {
   return `0${Math.floor(seconds)}`.slice(-2);

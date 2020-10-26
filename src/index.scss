@@ -2,7 +2,7 @@
 @use 'sass/variable';
 
 $size: 100;
-$header-font-size: 5;
+$header-font-size: 4;
 
 html, body {
   height: 100%;
@@ -40,7 +40,7 @@ body {
   @include mixin.theme-color(color, secondary);
   text-align: center;
   font-size: $header-font-size + vh;
-  margin-top: ($header-font-size / 10) + vh;
+  margin-top: 1%;
 
   @media (max-aspect-ratio: 1/1) {
     font-size: $header-font-size + vw;

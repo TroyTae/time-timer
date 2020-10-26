@@ -6,10 +6,11 @@ $margin-of-button: 10%;
 
 #timer {
   text-align: center;
+  margin-top: 1%;
 }
 
 .btn {
-  vertical-align: bottom;
+  vertical-align: middle;
   width: $button-size + vh;
   height: $button-size + vh;
   border-radius: 50%;
