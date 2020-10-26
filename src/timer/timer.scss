@@ -3,49 +3,39 @@
 $button-size: 7.5;
 $button-border-size: 0.5;
 $margin-of-button: 10%;
-$time-font-size: 6;
 
-:global(#timer) {
+#timer {
   text-align: center;
-  > .time, > .btn {
-    vertical-align: bottom;
-  }
-  > .time {
-    @include mixin.theme-color(color, secondary);
-    font-size: $time-font-size + vh;
-    line-height: 1;
-  }
-  > .btn {
-    width: $button-size + vh;
-    height: $button-size + vh;
-    border-radius: 50%;
-    border: ($button-border-size + vh) solid transparent;
-    @include mixin.theme-color(border-color, primary);
-    background: no-repeat 50% / 80%;
-    transition: opacity 100ms ease;
-    &:active { opacity: 0.6; }
-    &:disabled { opacity: 0.4; }
-    &.reset {
-      margin-right: $margin-of-button;
-      background-image: url(./images/replay.svg);
-    }
-    &.start {
-      margin-left: $margin-of-button;
-      background-image: url(./images/start.svg);
-    }
-    &.pause {
-      margin-left: $margin-of-button;
-      background-image: url(./images/pause.svg);
-    }
-  }
+}
+
+.btn {
+  vertical-align: bottom;
+  width: $button-size + vh;
+  height: $button-size + vh;
+  border-radius: 50%;
+  border: ($button-border-size + vh) solid transparent;
+  @include mixin.theme-color(border-color, primary);
+  background: no-repeat 50% / 80%;
+  transition: opacity 100ms ease;
+  &:active { opacity: 0.6; }
+  &:disabled { opacity: 0.4; }
   @media (max-aspect-ratio: 1/1) {
-    > .time {
-      font-size: $time-font-size + vw;
-    }
-    > .btn {
-      width: $button-size + vw;
-      height: $button-size + vw;
-      border-width: $button-border-size + vw;
-    }
+    width: $button-size + vw;
+    height: $button-size + vw;
+    border-width: $button-border-size + vw;
   }
+}
+
+#reset {
+  margin-right: $margin-of-button;
+  background-image: url(./images/replay.svg);
+}
+
+#start {
+  margin-left: $margin-of-button;
+  background-image: url(./images/start.svg);
+}
+#pause {
+  margin-left: $margin-of-button;
+  background-image: url(./images/pause.svg);
 }

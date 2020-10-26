@@ -9,6 +9,7 @@ import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
+import { setTimeText } from './timer/TimeText';
 // experimental
 import './DarkMode';
 
@@ -29,7 +30,7 @@ function init() {
   resize();
   draw();
   updateFavicon();
-  // setTimeText();
+  setTimeText();
 }
 
 window.addEventListener(EVENT_TYPE_RESIZE, init);

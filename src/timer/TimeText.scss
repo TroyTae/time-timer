@@ -1,0 +1,13 @@
+@use 'sass/mixin';
+
+$time-font-size: 6;
+
+#timeText {
+  line-height: 1;
+  vertical-align: bottom;
+  font-size: $time-font-size + vh;
+  @include mixin.theme-color(color, secondary);
+  @media (max-aspect-ratio: 1/1) {
+    font-size: $time-font-size + vw;
+  }
+}
