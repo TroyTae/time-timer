@@ -22,6 +22,5 @@ export function setSeconds(sec: number) {
 
 export function getDegree() { return degree; }
 export function setDegree(deg: number) {
-  degree = deg;
-  seconds = (360 - deg) * 10;
+  setSeconds(Math.round((360 - deg) * 10));
 }

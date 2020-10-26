@@ -9,6 +9,7 @@ import {
   TAG_NAME_SECTION,
 } from 'noliter';
 import * as styles from './Timer.scss';
+import { draw } from '/clock/RedCircle';
 import TimeText, { setTimeText } from './TimeText';
 import {
   getSeconds,
@@ -22,6 +23,7 @@ const Reset = $(TAG_NAME_BUTTON)
   .on(EVENT_TYPE_CLICK, () => {
     setSeconds(900);
     setTimeText();
+    draw();
   });
 
 const Trigger = $(TAG_NAME_BUTTON)
@@ -32,9 +34,7 @@ const Trigger = $(TAG_NAME_BUTTON)
       setStarted(false);
       Reset.sp(PROP_DISABLED, false);
       Trigger.sa(ATTR_CLASS, spaces(styles.btn, styles.start));
-      if (key) {
-        clearInterval(key);
-      }
+      clearInterval(key);
     };
     return () => {
       if (isStarted()) {
@@ -44,13 +44,12 @@ const Trigger = $(TAG_NAME_BUTTON)
         Reset.sp(PROP_DISABLED, true);
         Trigger.sa(ATTR_CLASS, spaces(styles.btn, styles.pause));
         key = window.setInterval(() => {
-          const sec = getSeconds();
-          setSeconds(sec - 1);
+          const sec = getSeconds() - 1;
+          setSeconds(sec);
           setTimeText();
+          draw();
           if (sec < 1) {
             stop();
-            setSeconds(0);
-            setTimeText();
           }
         }, 1000);
       }
