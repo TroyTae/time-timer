@@ -7,6 +7,7 @@ import {
 } from 'noliter';
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
+import Timer from './timer/Timer';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
 import { setTimeText } from './timer/TimeText';
@@ -22,6 +23,7 @@ document.body.appendChild(
         .sa(ATTR_ID, styles.header)
         .add('Time Timer'),
       Clock,
+      Timer,
     )
     .dom
 );

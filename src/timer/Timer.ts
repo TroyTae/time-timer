@@ -8,7 +8,7 @@ import {
   TAG_NAME_BUTTON,
   TAG_NAME_SECTION,
 } from 'noliter';
-import * as styles from './timer.scss';
+import * as styles from './Timer.scss';
 import TimeText, { setTimeText } from './TimeText';
 import {
   getSeconds,
@@ -62,4 +62,5 @@ export default $(TAG_NAME_SECTION)
   .add(
     Reset,
     TimeText,
+    Trigger,
   );
