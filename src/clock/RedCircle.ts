@@ -18,7 +18,7 @@ import {
 import { updateFavicon } from './Favicon';
 
 const RedCircle = $(TAG_NAME_CANVAS)
-  .attrs(ATTR_ID, styles.canvas)
+  .sa(ATTR_ID, styles.canvas)
   .on(EVENT_TYPE_MOUSEMOVE, (e) => {
     if (getDrawing() && !getStarting()) {
       const x = e.offsetX - canvas.width / 2;

@@ -15,11 +15,11 @@ import './dark-mode';
 document.head.appendChild(Favicon.dom);
 document.body.appendChild(
   $(TAG_NAME_ARTICLE)
-    .attrs(ATTR_ID, styles.app)
-    .append(
+    .sa(ATTR_ID, styles.app)
+    .add(
       $(TAG_NAME_HEADER)
-        .attrs(ATTR_ID, styles.header)
-        .append('Time Timer'),
+        .sa(ATTR_ID, styles.header)
+        .add('Time Timer'),
       Clock,
     )
     .dom

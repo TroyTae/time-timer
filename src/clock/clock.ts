@@ -11,27 +11,27 @@ import * as styles from './Clock.scss';
 import RedCircle from './RedCircle';
 
 export default $(TAG_NAME_SECTION)
-  .attrs(ATTR_ID, styles.clock)
-  .append(
+  .sa(ATTR_ID, styles.clock)
+  .add(
     $(TAG_NAME_DIV)
-      .attrs(ATTR_ID, styles.circle)
-      .append(RedCircle),
+      .sa(ATTR_ID, styles.circle)
+      .add(RedCircle),
     ...[...Array(12)].reduce((arr, v, i) => {
       const min = i * 5;
       arr.push(
         $(TAG_NAME_DIV)
-          .attrs(ATTR_CLASS, spaces(
+          .sa(ATTR_CLASS, spaces(
             styles.dot,
             styles[`m${min}`],
           ))
       );
       arr.push(
         $(TAG_NAME_SPAN)
-          .attrs(ATTR_CLASS, spaces(
+          .sa(ATTR_CLASS, spaces(
             styles.min,
             styles[`m${min}`],
           ))
-          .append(`${min}`)
+          .add(`${min}`)
       );
       return arr;
     }, []),
