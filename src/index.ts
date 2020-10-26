@@ -10,7 +10,7 @@ import Clock from './clock/Clock';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
 // experimental
-import './dark-mode';
+import './DarkMode';
 
 document.head.appendChild(Favicon.dom);
 document.body.appendChild(

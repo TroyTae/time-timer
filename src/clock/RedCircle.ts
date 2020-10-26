@@ -14,7 +14,7 @@ import {
   getDrawing,
   setDrawing,
   getStarting,
-} from '../time-data';
+} from '../TimeData';
 import { updateFavicon } from './Favicon';
 
 const RedCircle = $(TAG_NAME_CANVAS)
