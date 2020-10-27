@@ -17,6 +17,11 @@ body {
   @include mixin.theme-color(background-color, "background");
 }
 
+button {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 :root {
   --background: #{variable.$black};
   --on-background: #{variable.$white};

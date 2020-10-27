@@ -29,7 +29,6 @@ $min-font-size: 4;
   transition: color 100ms ease;
   padding: 0;
   border: none;
-  outline: none;
   background: none;
   transition: color 200ms ease;
   @include mixin.theme-color(color, secondary);
