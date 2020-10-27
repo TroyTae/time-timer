@@ -21,9 +21,25 @@ import { syncTimeText } from '/timer/TimeText';
 const Favicon = $('link').sa('rel', 'shortcut icon');
 document.head.appendChild(Favicon.dom);
 
+function startHandling() {
+  setModified(true);
+}
+
+function stopHandling() {
+  setModified(false);
+}
+
+function getRadian(degree: number) {
+  return Math.PI / 180 * degree;
+}
+
+function getTanDegree(x: number, y: number) {
+  return Math.atan(y / x) * 180 / Math.PI;
+}
+
 const RedCircle = $(TAG_NAME_CANVAS)
   .sa(ATTR_ID, styles.canvas)
-  .on(EVENT_TYPE_MOUSEMOVE, (e) => {
+  .on(EVENT_TYPE_MOUSEMOVE, function (e) {
     if (isModified() && !isStarted()) {
       const x = e.offsetX - canvas.width / 2;
       const y = e.offsetY - canvas.height / 2;
@@ -37,24 +53,12 @@ const RedCircle = $(TAG_NAME_CANVAS)
       draw();
     }
   }, { passive: true })
-  .on(EVENT_TYPE_MOUSEDOWN, () => setModified(true))
+  .on(EVENT_TYPE_MOUSEDOWN, startHandling)
   .on(EVENT_TYPE_MOUSEUP, stopHandling)
   .on(EVENT_TYPE_MOUSELEAVE, stopHandling);
+
 const canvas = RedCircle.dom;
 const context = canvas.getContext('2d');
-
-
-function getRadian(degree: number) {
-  return Math.PI / 180 * degree;
-}
-
-function getTanDegree(x: number, y: number) {
-  return Math.atan(y / x) * 180 / Math.PI;
-}
-
-function stopHandling() {
-  setModified(false);
-}
 
 export function draw() {
   const w = canvas.width;
