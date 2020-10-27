@@ -1,6 +1,7 @@
 import {
   $,
   ATTR_ID,
+  ATTR_HREF,
   EVENT_TYPE_MOUSEDOWN,
   EVENT_TYPE_MOUSELEAVE,
   EVENT_TYPE_MOUSEMOVE,
@@ -15,8 +16,10 @@ import {
   setModified,
   isStarted,
 } from '../TimeData';
-import { updateFavicon } from './Favicon';
 import { syncTimeText } from '/timer/TimeText';
+
+const Favicon = $('link').sa('rel', 'shortcut icon');
+document.head.appendChild(Favicon.dom);
 
 const RedCircle = $(TAG_NAME_CANVAS)
   .sa(ATTR_ID, styles.canvas)
@@ -51,7 +54,6 @@ function getTanDegree(x: number, y: number) {
 
 function stopHandling() {
   setModified(false);
-  updateFavicon();
 }
 
 export function draw() {
@@ -74,6 +76,8 @@ export function draw() {
   context.lineTo(cx, cy);
   context.closePath();
   context.fill();
+
+  Favicon.sa(ATTR_HREF, RedCircle.dom.toDataURL());
 }
 
 export function resize() {

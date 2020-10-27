@@ -8,13 +8,11 @@ import {
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Timer from './timer/Timer';
-import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
 import { syncTimeText } from './timer/TimeText';
 // experimental
 import './DarkMode';
 
-document.head.appendChild(Favicon.dom);
 document.body.appendChild(
   $(TAG_NAME_ARTICLE)
     .sa(ATTR_ID, styles.app)
@@ -31,7 +29,6 @@ document.body.appendChild(
 function init() {
   resize();
   draw();
-  updateFavicon();
   syncTimeText();
 }
 
