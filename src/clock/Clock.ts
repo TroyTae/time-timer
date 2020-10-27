@@ -5,7 +5,7 @@ import {
   ATTR_CLASS,
   TAG_NAME_DIV,
   TAG_NAME_SECTION,
-  TAG_NAME_SPAN,
+  TAG_NAME_BUTTON,
   EVENT_TYPE_CLICK,
 } from 'noliter';
 import * as styles from './Clock.scss';
@@ -21,9 +21,10 @@ export default $(TAG_NAME_SECTION)
       .add(RedCircle),
     ...[...Array(12)].map((v, i) => {
       const min = i * 5;
-      return $(TAG_NAME_DIV)
+      return $(TAG_NAME_BUTTON)
+        .add(`${min}`)
         .sa(ATTR_CLASS, spaces(
-          styles.label,
+          styles.min,
           styles[`m${min}`],
         ))
         .on(EVENT_TYPE_CLICK, () => {
@@ -31,12 +32,5 @@ export default $(TAG_NAME_SECTION)
           syncTimeText();
           draw();
         })
-        .add(
-          $(TAG_NAME_DIV)
-            .sa(ATTR_CLASS, styles.dot),
-          $(TAG_NAME_SPAN)
-            .sa(ATTR_CLASS, styles.min)
-            .add(`${min}`),
-        );
     }),
   );

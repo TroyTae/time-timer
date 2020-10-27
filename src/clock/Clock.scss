@@ -1,7 +1,7 @@
 @use 'sass/mixin';
 
 $clock-size: 70;
-$min-font-size: 4.5;
+$min-font-size: 4;
 
 #clock {
   position: relative;
@@ -22,47 +22,30 @@ $min-font-size: 4.5;
   }
 }
 
-.label {
-  position: absolute;
-  &.m0 { top: 5.5%; left: 49.5%; }
-  &.m5 { top: 12%; left: 30%; }
-  &.m10 { top: 28%; left: 17%; }
-  &.m15 { top: 49.5%; left: 12.5%; }
-  &.m20 { top: 70.5%; left: 17%; }
-  &.m25 { top: 86.5%; left: 30%; }
-  &.m30 { top: 93%; left: 49.5%; }
-  &.m35 { top: 86.5%; left: 69%; }
-  &.m40 { top: 70.5%; left: 82%; }
-  &.m45 { top: 49.5%; left: 86.5%; }
-  &.m50 { top: 28%; left: 82%; }
-  &.m55 { top: 12%; left: 69%; }
-  &.m0 { top: 0; left: 48.6%; }
-  &.m5 { top: 7%; left: 28%; }
-  &.m10 { top: 24%; left: 12.5%; }
-  &.m15 { top: 47.25%; left: 8%; }
-  &.m20 { top: 70.75%; left: 12%; }
-  &.m25 { top: 87.25%; left: 25.5%; }
-  &.m30 { top: 94%; left: 47.6%; }
-  &.m35 { top: 87%; left: 70%; }
-  &.m40 { top: 70.25%; left: 82.75%; }
-  &.m45 { top: 47.25%; left: 88%; }
-  &.m50 { top: 24%; left: 83.5%; }
-  &.m55 { top: 7%; left: 70.25%; }
-}
-
-.dot {
-  position: absolute;
-  width: 1%;
-  padding-top: 1%;
-  border-radius: 50%;
-  @include mixin.theme-color(background-color, secondary);
-}
-
 .min {
+  cursor: pointer;
+  position: absolute;
   font-size: $min-font-size + vh;
   transition: color 100ms ease;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  transition: color 200ms ease;
   @include mixin.theme-color(color, secondary);
   @media (max-aspect-ratio: 1/1) {
     font-size: $min-font-size + vw;
   }
+  &.m0 { top: 0; left: 48.75%; }
+  &.m5 { top: 6%; left: 30%; }
+  &.m10 { top: 22.5%; left: 14%; }
+  &.m15 { top: 46.5%; left: 8%; }
+  &.m20 { top: 70.5%; left: 13%; }
+  &.m25 { top: 88%; left: 28%; }
+  &.m30 { top: 93.5%; left: 48.75%; }
+  &.m35 { top: 88%; left: 68%; }
+  &.m40 { top: 70.5%; left: 82%; }
+  &.m45 { top: 46.5%; left: 87%; }
+  &.m50 { top: 22.5%; left: 82%; }
+  &.m55 { top: 6%; left: 68%; }
 }
