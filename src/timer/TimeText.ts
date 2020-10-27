@@ -13,7 +13,7 @@ function twoDigits(seconds: number) {
   return `0${Math.floor(seconds)}`.slice(-2);
 }
 
-export function setTimeText() {
+export function syncTimeText() {
   const sec = getSeconds();
   TimeText.sp(PROP_TEXT_CONTENT, `${twoDigits(sec / 60)}:${twoDigits(sec % 60)}`);
 }

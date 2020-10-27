@@ -10,7 +10,7 @@ import {
 } from 'noliter';
 import * as styles from './Timer.scss';
 import { draw } from '/clock/RedCircle';
-import TimeText, { setTimeText } from './TimeText';
+import TimeText, { syncTimeText } from './TimeText';
 import {
   getSeconds,
   isStarted,
@@ -22,7 +22,7 @@ const Reset = $(TAG_NAME_BUTTON)
   .sa(ATTR_CLASS, spaces(styles.btn, styles.reset))
   .on(EVENT_TYPE_CLICK, () => {
     setSeconds(900);
-    setTimeText();
+    syncTimeText();
     draw();
   });
 
@@ -46,7 +46,7 @@ const Trigger = $(TAG_NAME_BUTTON)
         key = window.setInterval(() => {
           const sec = getSeconds() - 1;
           setSeconds(sec);
-          setTimeText();
+          syncTimeText();
           draw();
           if (sec < 1) {
             stop();

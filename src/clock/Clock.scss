@@ -22,12 +22,8 @@ $min-font-size: 4.5;
   }
 }
 
-.dot {
+.label {
   position: absolute;
-  width: 1%;
-  padding-top: 1%;
-  border-radius: 50%;
-  @include mixin.theme-color(background-color, secondary);
   &.m0 { top: 5.5%; left: 49.5%; }
   &.m5 { top: 12%; left: 30%; }
   &.m10 { top: 28%; left: 17%; }
@@ -40,13 +36,6 @@ $min-font-size: 4.5;
   &.m45 { top: 49.5%; left: 86.5%; }
   &.m50 { top: 28%; left: 82%; }
   &.m55 { top: 12%; left: 69%; }
-}
-
-.min {
-  position: absolute;
-  font-size: $min-font-size + vh;
-  transition: color 100ms ease;
-  @include mixin.theme-color(color, secondary);
   &.m0 { top: 0; left: 48.6%; }
   &.m5 { top: 7%; left: 28%; }
   &.m10 { top: 24%; left: 12.5%; }
@@ -59,6 +48,20 @@ $min-font-size: 4.5;
   &.m45 { top: 47.25%; left: 88%; }
   &.m50 { top: 24%; left: 83.5%; }
   &.m55 { top: 7%; left: 70.25%; }
+}
+
+.dot {
+  position: absolute;
+  width: 1%;
+  padding-top: 1%;
+  border-radius: 50%;
+  @include mixin.theme-color(background-color, secondary);
+}
+
+.min {
+  font-size: $min-font-size + vh;
+  transition: color 100ms ease;
+  @include mixin.theme-color(color, secondary);
   @media (max-aspect-ratio: 1/1) {
     font-size: $min-font-size + vw;
   }

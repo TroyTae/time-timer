@@ -10,7 +10,7 @@ import Clock from './clock/Clock';
 import Timer from './timer/Timer';
 import Favicon, { updateFavicon } from './clock/Favicon';
 import { draw, resize } from './clock/RedCircle';
-import { setTimeText } from './timer/TimeText';
+import { syncTimeText } from './timer/TimeText';
 // experimental
 import './DarkMode';
 
@@ -32,7 +32,7 @@ function init() {
   resize();
   draw();
   updateFavicon();
-  setTimeText();
+  syncTimeText();
 }
 
 window.addEventListener(EVENT_TYPE_RESIZE, init);

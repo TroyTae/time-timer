@@ -16,7 +16,7 @@ import {
   isStarted,
 } from '../TimeData';
 import { updateFavicon } from './Favicon';
-import { setTimeText } from '/timer/TimeText';
+import { syncTimeText } from '/timer/TimeText';
 
 const RedCircle = $(TAG_NAME_CANVAS)
   .sa(ATTR_ID, styles.canvas)
@@ -30,7 +30,7 @@ const RedCircle = $(TAG_NAME_CANVAS)
       } else {
         setDegree(degree + 90);
       }
-      setTimeText();
+      syncTimeText();
       draw();
     }
   }, { passive: true })
