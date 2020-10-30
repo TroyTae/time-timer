@@ -5,6 +5,8 @@ $header-font-size: 4;
 
 html, body {
   height: 100%;
+  position: fixed;
+  overflow: hidden;
 }
 
 html {
@@ -31,7 +33,7 @@ button {
   height: $size + vh;
 
   @media (max-aspect-ratio: 1/1) {
-    padding-top: calc(#{$size / 2}vh - #{$size / 2}vw);
+    padding-top: calc(#{$size / 2}vh - #{$size / 2}vw - 4vw);
     width: $size + vw;
     height: $size + vw;
   }
