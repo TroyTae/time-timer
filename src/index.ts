@@ -10,8 +10,6 @@ import Clock from './clock/Clock';
 import Timer from './timer/Timer';
 import { draw, resize } from './clock/RedCircle';
 import { syncTimeText } from './timer/TimeText';
-// experimental
-import './DarkMode';
 
 document.body.appendChild(
   $(TAG_NAME_ARTICLE)
