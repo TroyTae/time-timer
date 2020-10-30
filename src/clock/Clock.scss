@@ -1,4 +1,4 @@
-@use 'sass/mixin';
+@use 'sass/variable' as v;
 
 $clock-size: 70;
 $min-font-size: 4;
@@ -10,12 +10,11 @@ $min-font-size: 4;
 
 #circle {
   position: relative;
+  margin: 6.5% auto;
+  border-radius: 50%;
   width: $clock-size + vh;
   height: $clock-size + vh;
-  border-radius: 50%;
-  margin: 6.5% auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  @include mixin.theme-color(background-color, on-background);
+  background: v.$white;
   @media (max-aspect-ratio: 1/1) {
     width: $clock-size + vw;
     height: $clock-size + vw;
@@ -27,11 +26,11 @@ $min-font-size: 4;
   position: absolute;
   font-size: $min-font-size + vh;
   transition: color 100ms ease;
+  color: v.$gray;
   padding: 0;
   border: none;
   background: none;
   transition: color 200ms ease;
-  @include mixin.theme-color(color, secondary);
   @media (max-aspect-ratio: 1/1) {
     font-size: $min-font-size + vw;
   }

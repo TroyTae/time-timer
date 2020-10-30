@@ -1,4 +1,4 @@
-@use 'sass/mixin';
+@use 'sass/variable' as v;
 
 $button-size: 7.5;
 $button-border-size: 0.5;
@@ -14,8 +14,7 @@ $margin-of-button: 10%;
   width: $button-size + vh;
   height: $button-size + vh;
   border-radius: 50%;
-  border: ($button-border-size + vh) solid transparent;
-  @include mixin.theme-color(border-color, primary);
+  border: ($button-border-size + vh) solid v.$orange;
   background: no-repeat 50% / 80%;
   transition: opacity 100ms ease;
   &:disabled { opacity: 0.4; }

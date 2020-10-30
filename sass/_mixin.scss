@@ -1,6 +1,0 @@
-@use './variable';
-
-@mixin theme-color($prop, $type) {
-  #{$prop}: variable.var-color($type);
-  #{$prop}: var(--#{$type});
-}

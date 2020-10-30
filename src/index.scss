@@ -1,5 +1,4 @@
-@use 'sass/mixin';
-@use 'sass/variable';
+@use 'sass/variable' as v;
 
 $size: 100;
 $header-font-size: 4;
@@ -14,19 +13,12 @@ html {
 
 body {
   margin: 0;
-  @include mixin.theme-color(background-color, "background");
+  background-color: v.$black;
 }
 
 button {
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-:root {
-  --background: #{variable.$black};
-  --on-background: #{variable.$white};
-  --primary: #{variable.$orange};
-  --secondary: #{variable.$gray};
 }
 
 #app {
@@ -42,7 +34,7 @@ button {
 }
 
 #header {
-  @include mixin.theme-color(color, secondary);
+  color: v.$gray;
   text-align: center;
   font-size: $header-font-size + vh;
   margin-top: 1%;
