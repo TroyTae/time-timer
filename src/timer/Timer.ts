@@ -14,6 +14,8 @@ import TimeText, { syncTimeText } from './TimeText';
 import {
   getSeconds,
   isStarted,
+  reset,
+  updateReset,
   setSeconds,
   setStarted,
 } from '../TimeData';
@@ -21,7 +23,7 @@ import {
 const Reset = $(TAG_NAME_BUTTON)
   .sa(ATTR_CLASS, spaces(styles.btn, styles.reset))
   .on(EVENT_TYPE_CLICK, () => {
-    setSeconds(900);
+    reset();
     syncTimeText();
     draw();
   });
@@ -41,6 +43,7 @@ const Trigger = $(TAG_NAME_BUTTON)
         stop();
       } else {
         setStarted(true);
+        updateReset();
         Reset.sp(PROP_DISABLED, true);
         Trigger.sa(ATTR_CLASS, spaces(styles.btn, styles.pause));
         key = window.setInterval(() => {

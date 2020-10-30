@@ -19,18 +19,19 @@ export default $(TAG_NAME_SECTION)
     $(TAG_NAME_DIV)
       .sa(ATTR_ID, styles.circle)
       .add(RedCircle),
-    ...[...Array(12)].map((v, i) => {
-      const min = i * 5;
-      return $(TAG_NAME_BUTTON)
-        .add(`${min}`)
-        .sa(ATTR_CLASS, spaces(
-          styles.min,
-          styles[`m${min}`],
-        ))
-        .on(EVENT_TYPE_CLICK, () => {
-          setSeconds(min * 60);
-          syncTimeText();
-          draw();
-        })
-    }),
+    ...[...Array(12)]
+      .map((v, i) => i * 5)
+      .map((min) => (
+        $(TAG_NAME_BUTTON)
+          .add(`${min}`)
+          .sa(ATTR_CLASS, spaces(
+            styles.min,
+            styles[`m${min}`],
+          ))
+          .on(EVENT_TYPE_CLICK, () => {
+            setSeconds(min * 60);
+            syncTimeText();
+            draw();
+          })
+      )),
   );
