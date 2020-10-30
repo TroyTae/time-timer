@@ -16,6 +16,10 @@ body {
   background-color: v.$black;
 }
 
+html, button {
+  font-family: sans-serif;
+}
+
 button {
   outline: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

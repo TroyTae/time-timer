@@ -10,7 +10,7 @@ import {
 } from 'noliter';
 import * as styles from './Clock.scss';
 import RedCircle, { draw } from './RedCircle';
-import { setSeconds } from '/TimeData';
+import { isStarted, setSeconds } from '/TimeData';
 import { syncTimeText } from '/timer/TimeText';
 
 export default $(TAG_NAME_SECTION)
@@ -29,9 +29,11 @@ export default $(TAG_NAME_SECTION)
             styles[`m${min}`],
           ))
           .on(EVENT_TYPE_CLICK, () => {
-            setSeconds(min * 60);
-            syncTimeText();
-            draw();
+            if (!isStarted()) {
+              setSeconds(min * 60);
+              syncTimeText();
+              draw();
+            }
           })
       )),
   );
