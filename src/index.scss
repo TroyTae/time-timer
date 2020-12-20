@@ -4,6 +4,7 @@ $size: 100;
 $header-font-size: 4;
 
 html, body {
+  width: 100%;
   height: 100%;
   position: fixed;
   overflow: hidden;
@@ -43,7 +44,7 @@ button {
   color: v.$gray;
   text-align: center;
   font-size: $header-font-size + vh;
-  margin-top: 1%;
+  padding-top: 1%;
 
   @media (max-aspect-ratio: 1/1) {
     font-size: $header-font-size + vw;

@@ -1,15 +1,15 @@
 import {
   $,
-  ATTR_ID,
-  ATTR_HREF,
-  TAG_NAME_CANVAS,
-  EVENT_TYPE_MOUSEDOWN,
-  EVENT_TYPE_MOUSELEAVE,
-  EVENT_TYPE_MOUSEMOVE,
-  EVENT_TYPE_MOUSEUP,
-  EVENT_TYPE_TOUCHSTART,
-  EVENT_TYPE_TOUCHEND,
-  EVENT_TYPE_TOUCHMOVE,
+  ID,
+  HREF,
+  CANVAS,
+  MOUSEDOWN,
+  MOUSELEAVE,
+  MOUSEMOVE,
+  MOUSEUP,
+  TOUCHSTART,
+  TOUCHEND,
+  TOUCHMOVE,
 } from 'noliter';
 import * as styles from './RedCircle.scss';
 import {
@@ -21,7 +21,7 @@ import {
 } from '../TimeData';
 import { syncTimeText } from '/timer/TimeText';
 
-const Favicon = $('link').sa('rel', 'shortcut icon');
+const Favicon = $('link').set('rel', 'shortcut icon');
 document.head.appendChild(Favicon.dom);
 
 function startHandling() {
@@ -53,15 +53,15 @@ function drawWithCoordinate(x: number, y: number) {
   }
 }
 
-const RedCircle = $(TAG_NAME_CANVAS)
-  .sa(ATTR_ID, styles.canvas)
-  .on(EVENT_TYPE_MOUSEMOVE, function (e) {
+const RedCircle = $(CANVAS)
+  .set(ID, styles.canvas)
+  .on(MOUSEMOVE, function (e) {
     drawWithCoordinate(
       e.offsetX - canvas.width / 2,
       e.offsetY - canvas.height / 2,
     );
   }, { passive: true })
-  .on(EVENT_TYPE_TOUCHMOVE, function (e) {
+  .on(TOUCHMOVE, function (e) {
     const touch = e.touches[0];
     const rect = canvas.getBoundingClientRect();
     drawWithCoordinate(
@@ -69,11 +69,11 @@ const RedCircle = $(TAG_NAME_CANVAS)
       touch.pageY - rect.y - canvas.height / 2,
     );
   }, { passive: true })
-  .on(EVENT_TYPE_MOUSEDOWN, startHandling)
-  .on(EVENT_TYPE_TOUCHSTART, startHandling)
-  .on(EVENT_TYPE_MOUSEUP, stopHandling)
-  .on(EVENT_TYPE_MOUSELEAVE, stopHandling)
-  .on(EVENT_TYPE_TOUCHEND, stopHandling);
+  .on(MOUSEDOWN, startHandling)
+  .on(TOUCHSTART, startHandling)
+  .on(MOUSEUP, stopHandling)
+  .on(MOUSELEAVE, stopHandling)
+  .on(TOUCHEND, stopHandling);
 
 const canvas = RedCircle.dom;
 const context = canvas.getContext('2d');
@@ -99,7 +99,7 @@ export function draw() {
   context.closePath();
   context.fill();
 
-  Favicon.sa(ATTR_HREF, RedCircle.dom.toDataURL());
+  Favicon.set(HREF, RedCircle.dom.toDataURL());
 }
 
 export function resize() {

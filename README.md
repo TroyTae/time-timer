@@ -1,4 +1,4 @@
-# Timer
+# Time Timer
 
 ## Description
 

@@ -1,9 +1,9 @@
 import {
   $,
-  ATTR_ID,
-  EVENT_TYPE_RESIZE,
-  TAG_NAME_ARTICLE,
-  TAG_NAME_HEADER,
+  ID,
+  RESIZE,
+  ARTICLE,
+  HEADER,
 } from 'noliter';
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
@@ -12,11 +12,11 @@ import { draw, resize } from './clock/RedCircle';
 import { syncTimeText } from './timer/TimeText';
 
 document.body.appendChild(
-  $(TAG_NAME_ARTICLE)
-    .sa(ATTR_ID, styles.app)
+  $(ARTICLE)
+    .set(ID, styles.app)
     .add(
-      $(TAG_NAME_HEADER)
-        .sa(ATTR_ID, styles.header)
+      $(HEADER)
+        .set(ID, styles.header)
         .add('Time Timer'),
       Clock,
       Timer,
@@ -30,6 +30,6 @@ function init() {
   syncTimeText();
 }
 
-window.addEventListener(EVENT_TYPE_RESIZE, init);
+window.addEventListener(RESIZE, init);
 
 init();
