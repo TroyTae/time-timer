@@ -15,7 +15,7 @@ import {
   getSeconds,
   isStarted,
   reset,
-  updateReset,
+  setResetTime,
   setSeconds,
   setStarted,
 } from '../TimeData';
@@ -43,7 +43,7 @@ const Trigger = $(BUTTON)
         stop();
       } else {
         setStarted(true);
-        updateReset();
+        setResetTime(getSeconds());
         Reset.set(DISABLED, true);
         Trigger.set(CLASS_NAME, spaces(styles.btn, styles.pause));
         key = window.setInterval(() => {

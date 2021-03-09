@@ -1,29 +1,30 @@
-let modified = false;
-let started = false;
-let degree = 270;
-let seconds = 900;
-let resetTime = seconds;
+import {notifier} from 'noliter';
 
-export function isModified() { return modified; }
-export function setModified(isModified: boolean) {
-  modified = isModified;
+const [isModified, setModified] = notifier(false);
+const [isStarted, setStarted] = notifier(false);
+const [getSeconds, setSeconds] = notifier(900);
+const [getResetTime, setResetTime] = notifier(getSeconds());
+
+function getDegree() {
+  return 360 - getSeconds() / 10;
 }
-
-export function isStarted() { return started; }
-export function setStarted(isStarted: boolean) {
-  started = isStarted;
-}
-
-export function getDegree() { return degree; }
-export function setDegree(deg: number) {
+function setDegree(deg: number) {
   setSeconds(Math.round((360 - deg) * 10));
 }
 
-export function getSeconds() { return seconds; }
-export function setSeconds(sec: number) {
-  seconds = sec;
-  degree = 360 - sec / 10;
+function reset() {
+  setSeconds(getResetTime());
 }
 
-export function reset() { setSeconds(resetTime); }
-export function updateReset() { resetTime = seconds; }
+export {
+  isModified,
+  setModified,
+  isStarted,
+  setStarted,
+  getSeconds,
+  setSeconds,
+  reset,
+  setResetTime,
+  getDegree,
+  setDegree,
+};
