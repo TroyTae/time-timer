@@ -11,7 +11,6 @@ import {
 import * as styles from './Clock.scss';
 import RedCircle, { draw } from './RedCircle';
 import { isStarted, setSeconds } from '/TimeData';
-import { syncTimeText } from '/timer/TimeText';
 
 export default $(SECTION)
   .set(ID, styles.clock)
@@ -31,7 +30,6 @@ export default $(SECTION)
           .on(CLICK, () => {
             if (!isStarted()) {
               setSeconds(min * 60);
-              syncTimeText();
               draw();
             }
           })

@@ -19,7 +19,6 @@ import {
   setModified,
   isStarted,
 } from '../TimeData';
-import { syncTimeText } from '/timer/TimeText';
 
 const Favicon = $('link').set('rel', 'shortcut icon');
 document.head.appendChild(Favicon.dom);
@@ -48,7 +47,6 @@ function drawWithCoordinate(x: number, y: number) {
     } else {
       setDegree(degree + 90);
     }
-    syncTimeText();
     draw();
   }
 }

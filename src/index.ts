@@ -9,7 +9,7 @@ import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Timer from './timer/Timer';
 import { draw, resize } from './clock/RedCircle';
-import { syncTimeText } from './timer/TimeText';
+import { setSeconds } from './TimeData';
 
 document.body.appendChild(
   $(ARTICLE)
@@ -24,12 +24,12 @@ document.body.appendChild(
     .dom
 );
 
-function init() {
+function redraw() {
   resize();
   draw();
-  syncTimeText();
+  setSeconds(900);
 }
 
-window.addEventListener(RESIZE, init);
+window.addEventListener(RESIZE, redraw);
 
-init();
+redraw();
