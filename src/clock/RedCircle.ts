@@ -76,7 +76,12 @@ const RedCircle = $(CANVAS)
 const canvas = RedCircle.dom;
 const context = canvas.getContext('2d');
 
-addSecondsListener(function() {
+function resize() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = canvas.parentElement.clientHeight;
+}
+
+function draw() {
   const w = canvas.width;
   const h = canvas.height;
   const cx = w / 2;
@@ -98,11 +103,10 @@ addSecondsListener(function() {
   context.fill();
 
   Favicon.set(HREF, RedCircle.dom.toDataURL());
-});
-
-export function resize() {
-  canvas.width = canvas.parentElement.clientWidth;
-  canvas.height = canvas.parentElement.clientHeight;
 }
+
+addSecondsListener(draw);
+
+export { resize, draw };
 
 export default RedCircle;

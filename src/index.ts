@@ -1,15 +1,15 @@
 import {
   $,
   ID,
-  RESIZE,
   ARTICLE,
   HEADER,
+  RESIZE,
 } from 'noliter';
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Timer from './timer/Timer';
-import { resize } from './clock/RedCircle';
 import { setSeconds } from './TimeData';
+import { draw, resize } from './clock/RedCircle';
 
 document.body.appendChild(
   $(ARTICLE)
@@ -24,11 +24,10 @@ document.body.appendChild(
     .dom
 );
 
-function redraw() {
+window.addEventListener(RESIZE, function() {
   resize();
-  setSeconds(900);
-}
+  draw();
+});
 
-window.addEventListener(RESIZE, redraw);
-
-redraw();
+resize();
+setSeconds(900);
