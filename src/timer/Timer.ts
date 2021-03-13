@@ -9,7 +9,6 @@ import {
   SECTION,
 } from 'noliter';
 import * as styles from './Timer.scss';
-import { draw } from '/clock/RedCircle';
 import TimeText from './TimeText';
 import {
   getSeconds,
@@ -20,7 +19,7 @@ import {
 
 const Reset = $(BUTTON)
   .set(CLASS_NAME, spaces(styles.btn, styles.reset))
-  .on(CLICK, draw);
+  .on(CLICK, () => setSeconds(900));
 
 const Trigger = $(BUTTON)
   .set(CLASS_NAME, spaces(styles.btn, styles.start))
@@ -42,7 +41,6 @@ const Trigger = $(BUTTON)
         key = window.setInterval(() => {
           const sec = getSeconds() - 1;
           setSeconds(sec);
-          draw();
           if (sec < 1) {
             stop();
           }

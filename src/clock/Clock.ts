@@ -9,7 +9,7 @@ import {
   CLICK,
 } from 'noliter';
 import * as styles from './Clock.scss';
-import RedCircle, { draw } from './RedCircle';
+import RedCircle from './RedCircle';
 import { isStarted, setSeconds } from '/TimeData';
 
 export default $(SECTION)
@@ -30,7 +30,6 @@ export default $(SECTION)
           .on(CLICK, () => {
             if (!isStarted()) {
               setSeconds(min * 60);
-              draw();
             }
           })
       )),

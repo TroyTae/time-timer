@@ -8,7 +8,7 @@ import {
 import * as styles from './index.scss';
 import Clock from './clock/Clock';
 import Timer from './timer/Timer';
-import { draw, resize } from './clock/RedCircle';
+import { resize } from './clock/RedCircle';
 import { setSeconds } from './TimeData';
 
 document.body.appendChild(
@@ -26,7 +26,6 @@ document.body.appendChild(
 
 function redraw() {
   resize();
-  draw();
   setSeconds(900);
 }
 

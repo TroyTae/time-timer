@@ -18,6 +18,7 @@ import {
   isModified,
   setModified,
   isStarted,
+  addSecondsListener,
 } from '../TimeData';
 
 const Favicon = $('link').set('rel', 'shortcut icon');
@@ -47,7 +48,6 @@ function drawWithCoordinate(x: number, y: number) {
     } else {
       setDegree(degree + 90);
     }
-    draw();
   }
 }
 
@@ -76,7 +76,7 @@ const RedCircle = $(CANVAS)
 const canvas = RedCircle.dom;
 const context = canvas.getContext('2d');
 
-export function draw() {
+addSecondsListener(function() {
   const w = canvas.width;
   const h = canvas.height;
   const cx = w / 2;
@@ -98,7 +98,7 @@ export function draw() {
   context.fill();
 
   Favicon.set(HREF, RedCircle.dom.toDataURL());
-}
+});
 
 export function resize() {
   canvas.width = canvas.parentElement.clientWidth;
