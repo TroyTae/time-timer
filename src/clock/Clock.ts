@@ -1,32 +1,34 @@
 import spaces from "one-spaces";
 import {
   createElement,
-  addEventListener,
   DIV,
   SECTION,
   BUTTON,
   CLICK,
-  append,
+  ID,
+  TEXT_CONTENT,
+  CLASS_NAME,
+  APPEND,
+  ADD_EVENT_LISTENER,
 } from "noliter";
 import { isStarted, setSeconds, syncView } from "~/TimeData";
 import RedCircle from "~/clock/RedCircle";
 import * as styles from "./Clock.scss";
 
 export default createElement(SECTION, (el) => {
-  el.id = styles.clock;
-  append(
-    el,
+  el[ID] = styles.clock;
+  el[APPEND](
     createElement(DIV, (el) => {
-      el.id = styles.circle;
-      append(el, RedCircle);
+      el[ID] = styles.circle;
+      el[APPEND](RedCircle);
     }),
     ...[...Array(12)]
-      .map((v, i) => i * 5)
+      .map((_, i) => i * 5)
       .map((min) =>
         createElement(BUTTON, (el) => {
-          el.textContent = min.toString();
-          el.className = spaces(styles.min, styles[`m${min}`]);
-          addEventListener(el, CLICK, () => {
+          el[TEXT_CONTENT] = min.toString();
+          el[CLASS_NAME] = spaces(styles.min, styles[`m${min}`]);
+          el[ADD_EVENT_LISTENER](CLICK, () => {
             if (!isStarted()) {
               setSeconds(min * 60);
               syncView();

@@ -1,7 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "noliter": "0.9.3",
+    "noliter": "0.9.6",
     "one-spaces": "1.3.8",
     "parcel-bundler": "1.12.5",
     "postcss-modules": "3.2.2",

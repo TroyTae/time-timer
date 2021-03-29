@@ -1,19 +1,30 @@
-import { createElement, append, ARTICLE, HEADER, RESIZE } from "noliter";
+import {
+  createElement,
+  ARTICLE,
+  HEADER,
+  RESIZE,
+  ID,
+  TEXT_CONTENT,
+  WIDTH,
+  HEIGHT,
+  PARENT_ELEMENT,
+  CLIENT_WIDTH,
+  CLIENT_HEIGHT,
+  APPEND,
+} from "noliter";
 import Clock from "~/clock/Clock";
 import RedCircle from "~/clock/RedCircle";
 import Timer from "~/timer/Timer";
 import { syncView } from "~/TimeData";
 import * as styles from "./index.scss";
 
-append(
-  document.body,
+document.body[APPEND](
   createElement(ARTICLE, (article) => {
-    article.id = styles.app;
-    append(
-      article,
+    article[ID] = styles.app;
+    article[APPEND](
       createElement(HEADER, (header) => {
-        header.id = styles.header;
-        header.textContent = "Time Timer";
+        header[ID] = styles.header;
+        header[TEXT_CONTENT] = "Time Timer";
       }),
       Clock,
       Timer
@@ -22,8 +33,8 @@ append(
 );
 
 function init() {
-  RedCircle.width = RedCircle.parentElement.clientWidth;
-  RedCircle.height = RedCircle.parentElement.clientHeight;
+  RedCircle[WIDTH] = RedCircle[PARENT_ELEMENT][CLIENT_WIDTH];
+  RedCircle[HEIGHT] = RedCircle[PARENT_ELEMENT][CLIENT_HEIGHT];
   syncView();
 }
 window.addEventListener(RESIZE, init);
