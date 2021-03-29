@@ -1,9 +1,9 @@
 {
   "private": true,
   "devDependencies": {
-    "noliter": "0.8.6",
+    "noliter": "0.9.3",
     "one-spaces": "1.3.8",
-    "parcel-bundler": "1.12.3",
+    "parcel-bundler": "1.12.5",
     "postcss-modules": "3.2.2",
     "sass": "1.32.8",
     "typescript": "4.2.3"

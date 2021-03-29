@@ -1,36 +1,38 @@
-import spaces from 'one-spaces';
+import spaces from "one-spaces";
 import {
-  $,
-  ID,
-  CLASS_NAME,
+  createElement,
+  addEventListener,
   DIV,
   SECTION,
   BUTTON,
   CLICK,
-} from 'noliter';
-import * as styles from './Clock.scss';
-import RedCircle from './RedCircle';
-import { isStarted, setSeconds } from '/TimeData';
+  append,
+} from "noliter";
+import RedCircle, { draw } from "~/clock/RedCircle";
+import { isStarted, setSeconds } from "~/TimeData";
+import * as styles from "./Clock.scss";
 
-export default $(SECTION)
-  .set(ID, styles.clock)
-  .add(
-    $(DIV)
-      .set(ID, styles.circle)
-      .add(RedCircle),
+export default createElement(SECTION, (el) => {
+  el.id = styles.clock;
+  append(
+    el,
+    createElement(DIV, (el) => {
+      el.id = styles.circle;
+      append(el, RedCircle);
+    }),
     ...[...Array(12)]
       .map((v, i) => i * 5)
-      .map((min) => (
-        $(BUTTON)
-          .add(`${min}`)
-          .set(CLASS_NAME, spaces(
-            styles.min,
-            styles[`m${min}`],
-          ))
-          .on(CLICK, () => {
+      .map((min) =>
+        createElement(BUTTON, (el) => {
+          el.textContent = min.toString();
+          el.className = spaces(styles.min, styles[`m${min}`]);
+          addEventListener(el, CLICK, () => {
             if (!isStarted()) {
               setSeconds(min * 60);
+              draw();
             }
-          })
-      )),
+          });
+        })
+      )
   );
+});

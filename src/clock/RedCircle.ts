@@ -1,7 +1,6 @@
 import {
-  $,
-  ID,
-  HREF,
+  append,
+  createElement,
   CANVAS,
   MOUSEDOWN,
   MOUSELEAVE,
@@ -10,19 +9,22 @@ import {
   TOUCHSTART,
   TOUCHEND,
   TOUCHMOVE,
-} from 'noliter';
-import * as styles from './RedCircle.scss';
+  LINK,
+  addEventListener,
+} from "noliter";
+import * as styles from "./RedCircle.scss";
 import {
   getDegree,
   setDegree,
   isModified,
   setModified,
   isStarted,
-  addSecondsListener,
-} from '../TimeData';
+} from "../TimeData";
 
-const Favicon = $('link').set('rel', 'shortcut icon');
-document.head.appendChild(Favicon.dom);
+const favicon = createElement(LINK, (link) => {
+  link.rel = "shortcut icon";
+});
+append(document.head, favicon);
 
 function startHandling() {
   setModified(true);
@@ -33,11 +35,11 @@ function stopHandling() {
 }
 
 function getRadian(degree: number) {
-  return Math.PI / 180 * degree;
+  return (Math.PI / 180) * degree;
 }
 
 function getTanDegree(x: number, y: number) {
-  return Math.atan(y / x) * 180 / Math.PI;
+  return (Math.atan(y / x) * 180) / Math.PI;
 }
 
 function drawWithCoordinate(x: number, y: number) {
@@ -48,33 +50,40 @@ function drawWithCoordinate(x: number, y: number) {
     } else {
       setDegree(degree + 90);
     }
+    draw();
   }
 }
 
-const RedCircle = $(CANVAS)
-  .set(ID, styles.canvas)
-  .on(MOUSEMOVE, function (e) {
+const canvas = createElement(CANVAS, (el) => (el.id = styles.canvas));
+const context = canvas.getContext("2d");
+addEventListener(
+  canvas,
+  MOUSEMOVE,
+  (e) =>
     drawWithCoordinate(
       e.offsetX - canvas.width / 2,
-      e.offsetY - canvas.height / 2,
-    );
-  }, { passive: true })
-  .on(TOUCHMOVE, function (e) {
+      e.offsetY - canvas.height / 2
+    ),
+  { passive: true }
+);
+addEventListener(
+  canvas,
+  TOUCHMOVE,
+  (e) => {
     const touch = e.touches[0];
     const rect = canvas.getBoundingClientRect();
     drawWithCoordinate(
       touch.pageX - rect.x - canvas.width / 2,
-      touch.pageY - rect.y - canvas.height / 2,
+      touch.pageY - rect.y - canvas.height / 2
     );
-  }, { passive: true })
-  .on(MOUSEDOWN, startHandling)
-  .on(TOUCHSTART, startHandling)
-  .on(MOUSEUP, stopHandling)
-  .on(MOUSELEAVE, stopHandling)
-  .on(TOUCHEND, stopHandling);
-
-const canvas = RedCircle.dom;
-const context = canvas.getContext('2d');
+  },
+  { passive: true }
+);
+addEventListener(canvas, MOUSEDOWN, startHandling);
+addEventListener(canvas, TOUCHSTART, startHandling);
+addEventListener(canvas, MOUSEUP, stopHandling);
+addEventListener(canvas, MOUSELEAVE, stopHandling);
+addEventListener(canvas, TOUCHEND, stopHandling);
 
 function resize() {
   canvas.width = canvas.parentElement.clientWidth;
@@ -88,25 +97,16 @@ function draw() {
   const cy = h / 2;
 
   context.clearRect(0, 0, w, h);
-  context.fillStyle = '#E31936';
+  context.fillStyle = "#E31936";
   context.beginPath();
-  context.arc(
-    cx,
-    cy,
-    cx,
-    getRadian(270),
-    getRadian(getDegree() - 90),
-    true
-  );
+  context.arc(cx, cy, cx, getRadian(270), getRadian(getDegree() - 90), true);
   context.lineTo(cx, cy);
   context.closePath();
   context.fill();
 
-  Favicon.set(HREF, RedCircle.dom.toDataURL());
+  favicon.href = canvas.toDataURL();
 }
-
-addSecondsListener(draw);
 
 export { resize, draw };
 
-export default RedCircle;
+export default canvas;
