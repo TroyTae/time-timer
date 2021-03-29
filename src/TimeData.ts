@@ -1,3 +1,6 @@
+import { setTimeText } from "./timer/TimeText";
+import { draw } from "./clock/RedCircle";
+
 let modified = false;
 let started = false;
 let degree = 270;
@@ -30,4 +33,9 @@ export function getSeconds() {
 export function setSeconds(sec: number) {
   seconds = sec;
   degree = 360 - sec / 10;
+}
+
+export function syncView() {
+  setTimeText(seconds);
+  draw(degree);
 }

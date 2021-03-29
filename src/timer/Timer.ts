@@ -1,58 +1,65 @@
-import spaces from 'one-spaces';
+import spaces from "one-spaces";
 import {
-  $,
-  ID,
-  CLASS_NAME,
+  append,
+  createElement,
+  addEventListener,
   CLICK,
-  DISABLED,
   BUTTON,
   SECTION,
-} from 'noliter';
-import * as styles from './Timer.scss';
-import TimeText from './TimeText';
+} from "noliter";
 import {
   getSeconds,
   isStarted,
   setSeconds,
   setStarted,
-} from '../TimeData';
+  syncView,
+} from "~/TimeData";
+import TimeText from "~/timer/TimeText";
+import * as styles from "./Timer.scss";
 
-const Reset = $(BUTTON)
-  .set(CLASS_NAME, spaces(styles.btn, styles.reset))
-  .on(CLICK, () => setSeconds(900));
+const Reset = createElement(BUTTON, (el) => {
+  el.className = spaces(styles.btn, styles.reset);
+  addEventListener(el, CLICK, () => {
+    setSeconds(900);
+    syncView();
+  });
+});
 
-const Trigger = $(BUTTON)
-  .set(CLASS_NAME, spaces(styles.btn, styles.start))
-  .on(CLICK, (() => {
-    let key: number | null = null;
-    const stop = () => {
-      setStarted(false);
-      Reset.set(DISABLED, false);
-      Trigger.set(CLASS_NAME, spaces(styles.btn, styles.start));
-      clearInterval(key);
-    };
-    return () => {
-      if (isStarted()) {
-        stop();
-      } else {
-        setStarted(true);
-        Reset.set(DISABLED, true);
-        Trigger.set(CLASS_NAME, spaces(styles.btn, styles.pause));
-        key = window.setInterval(() => {
-          const sec = getSeconds() - 1;
-          setSeconds(sec);
-          if (sec < 1) {
-            stop();
-          }
-        }, 1000);
-      }
-    };
-  })());
-
-export default $(SECTION)
-  .set(ID, styles.timer)
-  .add(
-    Reset,
-    TimeText,
-    Trigger,
+const Trigger = createElement(BUTTON, (el) => {
+  el.className = spaces(styles.btn, styles.start);
+  addEventListener(
+    el,
+    CLICK,
+    (() => {
+      let key: number | null = null;
+      const stop = () => {
+        setStarted(false);
+        Reset.disabled = false;
+        Trigger.className = spaces(styles.btn, styles.start);
+        clearInterval(key);
+      };
+      return () => {
+        if (isStarted()) {
+          stop();
+        } else {
+          setStarted(true);
+          Reset.disabled = true;
+          Trigger.className = spaces(styles.btn, styles.pause);
+          key = window.setInterval(() => {
+            const sec = getSeconds() - 1;
+            setSeconds(sec);
+            if (sec < 1) {
+              stop();
+            }
+            syncView();
+          }, 1000);
+        }
+      };
+    })()
   );
+});
+
+export default createElement(SECTION, (el) => {
+  el.id = styles.timer;
+  append(el, Reset, TimeText, Trigger);
+});

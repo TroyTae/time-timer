@@ -8,8 +8,8 @@ import {
   CLICK,
   append,
 } from "noliter";
-import RedCircle, { draw } from "~/clock/RedCircle";
-import { isStarted, setSeconds } from "~/TimeData";
+import { isStarted, setSeconds, syncView } from "~/TimeData";
+import RedCircle from "~/clock/RedCircle";
 import * as styles from "./Clock.scss";
 
 export default createElement(SECTION, (el) => {
@@ -29,7 +29,7 @@ export default createElement(SECTION, (el) => {
           addEventListener(el, CLICK, () => {
             if (!isStarted()) {
               setSeconds(min * 60);
-              draw();
+              syncView();
             }
           });
         })

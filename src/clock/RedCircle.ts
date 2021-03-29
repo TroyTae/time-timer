@@ -12,14 +12,14 @@ import {
   LINK,
   addEventListener,
 } from "noliter";
-import * as styles from "./RedCircle.scss";
 import {
-  getDegree,
   setDegree,
   isModified,
   setModified,
   isStarted,
-} from "../TimeData";
+  syncView,
+} from "~/TimeData";
+import * as styles from "./RedCircle.scss";
 
 const favicon = createElement(LINK, (link) => {
   link.rel = "shortcut icon";
@@ -50,63 +50,56 @@ function drawWithCoordinate(x: number, y: number) {
     } else {
       setDegree(degree + 90);
     }
-    draw();
+    syncView();
   }
 }
 
-const canvas = createElement(CANVAS, (el) => (el.id = styles.canvas));
-const context = canvas.getContext("2d");
+const RedCircle = createElement(CANVAS, (el) => (el.id = styles.canvas));
+const context = RedCircle.getContext("2d");
 addEventListener(
-  canvas,
+  RedCircle,
   MOUSEMOVE,
   (e) =>
     drawWithCoordinate(
-      e.offsetX - canvas.width / 2,
-      e.offsetY - canvas.height / 2
+      e.offsetX - RedCircle.width / 2,
+      e.offsetY - RedCircle.height / 2
     ),
   { passive: true }
 );
 addEventListener(
-  canvas,
+  RedCircle,
   TOUCHMOVE,
   (e) => {
     const touch = e.touches[0];
-    const rect = canvas.getBoundingClientRect();
+    const rect = RedCircle.getBoundingClientRect();
     drawWithCoordinate(
-      touch.pageX - rect.x - canvas.width / 2,
-      touch.pageY - rect.y - canvas.height / 2
+      touch.pageX - rect.x - RedCircle.width / 2,
+      touch.pageY - rect.y - RedCircle.height / 2
     );
   },
   { passive: true }
 );
-addEventListener(canvas, MOUSEDOWN, startHandling);
-addEventListener(canvas, TOUCHSTART, startHandling);
-addEventListener(canvas, MOUSEUP, stopHandling);
-addEventListener(canvas, MOUSELEAVE, stopHandling);
-addEventListener(canvas, TOUCHEND, stopHandling);
+addEventListener(RedCircle, MOUSEDOWN, startHandling);
+addEventListener(RedCircle, TOUCHSTART, startHandling);
+addEventListener(RedCircle, MOUSEUP, stopHandling);
+addEventListener(RedCircle, MOUSELEAVE, stopHandling);
+addEventListener(RedCircle, TOUCHEND, stopHandling);
 
-function resize() {
-  canvas.width = canvas.parentElement.clientWidth;
-  canvas.height = canvas.parentElement.clientHeight;
-}
-
-function draw() {
-  const w = canvas.width;
-  const h = canvas.height;
+export function draw(degree: number) {
+  const w = RedCircle.width;
+  const h = RedCircle.height;
   const cx = w / 2;
   const cy = h / 2;
 
   context.clearRect(0, 0, w, h);
   context.fillStyle = "#E31936";
   context.beginPath();
-  context.arc(cx, cy, cx, getRadian(270), getRadian(getDegree() - 90), true);
+  context.arc(cx, cy, cx, getRadian(270), getRadian(degree - 90), true);
   context.lineTo(cx, cy);
   context.closePath();
   context.fill();
 
-  favicon.href = canvas.toDataURL();
+  favicon.href = RedCircle.toDataURL();
 }
 
-export { resize, draw };
-
-export default canvas;
+export default RedCircle;

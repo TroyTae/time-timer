@@ -1,8 +1,8 @@
 import { createElement, append, ARTICLE, HEADER, RESIZE } from "noliter";
 import Clock from "~/clock/Clock";
-import { draw, resize } from "~/clock/RedCircle";
-// import Timer from "~/timer/Timer";
-import { setSeconds } from "~/TimeData";
+import RedCircle from "~/clock/RedCircle";
+import Timer from "~/timer/Timer";
+import { syncView } from "~/TimeData";
 import * as styles from "./index.scss";
 
 append(
@@ -15,18 +15,16 @@ append(
         header.id = styles.header;
         header.textContent = "Time Timer";
       }),
-      Clock
-      // Timer
+      Clock,
+      Timer
     );
   })
 );
 
 function init() {
-  resize();
-  draw();
+  RedCircle.width = RedCircle.parentElement.clientWidth;
+  RedCircle.height = RedCircle.parentElement.clientHeight;
+  syncView();
 }
-
 window.addEventListener(RESIZE, init);
-
-setSeconds(900);
 init();
