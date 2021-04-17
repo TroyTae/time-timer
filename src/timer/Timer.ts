@@ -1,15 +1,5 @@
 import spaces from "one-spaces";
-import {
-  createElement,
-  APPEND,
-  ADD_EVENT_LISTENER,
-  CLICK,
-  BUTTON,
-  SECTION,
-  CLASS_NAME,
-  DISABLED,
-  ID,
-} from "noliter";
+import { createElement } from "noliter";
 import {
   getSeconds,
   isStarted,
@@ -20,24 +10,24 @@ import {
 import TimeText from "~/timer/TimeText";
 import * as styles from "./Timer.scss";
 
-const Reset = createElement(BUTTON, (el) => {
-  el[CLASS_NAME] = spaces(styles.btn, styles.reset);
-  el[ADD_EVENT_LISTENER](CLICK, () => {
+const Reset = createElement("button", (el) => {
+  el.className = spaces(styles.btn, styles.reset);
+  el.addEventListener("click", () => {
     setSeconds(900);
     syncView();
   });
 });
 
-const Trigger = createElement(BUTTON, (el) => {
-  el[CLASS_NAME] = spaces(styles.btn, styles.start);
-  el[ADD_EVENT_LISTENER](
-    CLICK,
+const Trigger = createElement("button", (el) => {
+  el.className = spaces(styles.btn, styles.start);
+  el.addEventListener(
+    "click",
     (() => {
       let key: number | null = null;
       const stop = () => {
         setStarted(false);
-        Reset[DISABLED] = false;
-        Trigger[CLASS_NAME] = spaces(styles.btn, styles.start);
+        Reset.disabled = false;
+        Trigger.className = spaces(styles.btn, styles.start);
         clearInterval(key);
       };
       return () => {
@@ -45,8 +35,8 @@ const Trigger = createElement(BUTTON, (el) => {
           stop();
         } else {
           setStarted(true);
-          Reset[DISABLED] = true;
-          Trigger[CLASS_NAME] = spaces(styles.btn, styles.pause);
+          Reset.disabled = true;
+          Trigger.className = spaces(styles.btn, styles.pause);
           key = window.setInterval(() => {
             const sec = getSeconds() - 1;
             setSeconds(sec);
@@ -61,7 +51,7 @@ const Trigger = createElement(BUTTON, (el) => {
   );
 });
 
-export default createElement(SECTION, (el) => {
-  el[ID] = styles.timer;
-  el[APPEND](Reset, TimeText, Trigger);
+export default createElement("section", (el) => {
+  el.id = styles.timer;
+  el.append(Reset, TimeText, Trigger);
 });

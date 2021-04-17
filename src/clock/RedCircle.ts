@@ -1,26 +1,4 @@
-import {
-  createElement,
-  APPEND,
-  CANVAS,
-  MOUSEDOWN,
-  MOUSELEAVE,
-  MOUSEMOVE,
-  MOUSEUP,
-  TOUCHSTART,
-  TOUCHEND,
-  TOUCHMOVE,
-  REL,
-  LINK,
-  ADD_EVENT_LISTENER,
-  OFFSET_X,
-  OFFSET_Y,
-  WIDTH,
-  HEIGHT,
-  ID,
-  TOUCHES,
-  PAGE_X,
-  PAGE_Y,
-} from "noliter";
+import { createElement } from "noliter";
 import {
   setDegree,
   isModified,
@@ -30,10 +8,10 @@ import {
 } from "~/TimeData";
 import * as styles from "./RedCircle.scss";
 
-const favicon = createElement(LINK, (link) => {
-  link[REL] = "shortcut icon";
+const favicon = createElement("link", (link) => {
+  link.rel = "shortcut icon";
 });
-document.head[APPEND](favicon);
+document.head.appendChild(favicon);
 
 function startHandling() {
   setModified(true);
@@ -63,40 +41,40 @@ function drawWithCoordinate(x: number, y: number) {
   }
 }
 
-const RedCircle = createElement(CANVAS, (el) => {
-  el[ID] = styles.canvas;
-  el[ADD_EVENT_LISTENER](
-    MOUSEMOVE,
+const RedCircle = createElement("canvas", (el) => {
+  el.id = styles.canvas;
+  el.addEventListener(
+    "mousemove",
     (e) =>
       drawWithCoordinate(
-        e[OFFSET_X] - RedCircle[WIDTH] / 2,
-        e[OFFSET_Y] - RedCircle[HEIGHT] / 2
+        e.offsetX - RedCircle.width / 2,
+        e.offsetY - RedCircle.height / 2
       ),
     { passive: true }
   );
-  el[ADD_EVENT_LISTENER](
-    TOUCHMOVE,
+  el.addEventListener(
+    "touchmove",
     (e) => {
-      const touch = e[TOUCHES][0];
+      const touch = e.touches[0];
       const rect = RedCircle.getBoundingClientRect();
       drawWithCoordinate(
-        touch[PAGE_X] - rect.x - RedCircle[WIDTH] / 2,
-        touch[PAGE_Y] - rect.y - RedCircle[HEIGHT] / 2
+        touch.pageX - rect.x - RedCircle.width / 2,
+        touch.pageY - rect.y - RedCircle.height / 2
       );
     },
     { passive: true }
   );
-  el[ADD_EVENT_LISTENER](MOUSEDOWN, startHandling);
-  el[ADD_EVENT_LISTENER](TOUCHSTART, startHandling);
-  el[ADD_EVENT_LISTENER](MOUSEUP, stopHandling);
-  el[ADD_EVENT_LISTENER](MOUSELEAVE, stopHandling);
-  el[ADD_EVENT_LISTENER](TOUCHEND, stopHandling);
+  el.addEventListener("mousedown", startHandling);
+  el.addEventListener("touchstart", startHandling);
+  el.addEventListener("mouseup", stopHandling);
+  el.addEventListener("mouseleave", stopHandling);
+  el.addEventListener("touchend", stopHandling);
 });
 const context = RedCircle.getContext("2d");
 
 export function draw(degree: number) {
-  const w = RedCircle[WIDTH];
-  const h = RedCircle[HEIGHT];
+  const w = RedCircle.width;
+  const h = RedCircle.height;
   const cx = w / 2;
   const cy = h / 2;
 
