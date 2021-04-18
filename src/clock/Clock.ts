@@ -1,6 +1,6 @@
 import spaces from "one-spaces";
 import { createElement } from "noliter";
-import { isStarted, setSeconds, syncView } from "~/TimeData";
+import { isStarted, setSeconds } from "~/TimeData";
 import RedCircle from "~/clock/RedCircle";
 import * as styles from "./Clock.scss";
 
@@ -20,7 +20,6 @@ export default createElement("section", (el) => {
           el.addEventListener("click", () => {
             if (!isStarted()) {
               setSeconds(min * 60);
-              syncView();
             }
           });
         })

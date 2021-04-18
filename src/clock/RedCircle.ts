@@ -1,11 +1,5 @@
 import { createElement } from "noliter";
-import {
-  setDegree,
-  isModified,
-  setModified,
-  isStarted,
-  syncView,
-} from "~/TimeData";
+import { setDegree, isModified, setModified, isStarted } from "~/TimeData";
 import * as styles from "./RedCircle.scss";
 
 const favicon = createElement("link", (link) => {
@@ -37,7 +31,6 @@ function drawWithCoordinate(x: number, y: number) {
     } else {
       setDegree(degree + 90);
     }
-    syncView();
   }
 }
 
