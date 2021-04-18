@@ -5,17 +5,14 @@ import {
   isStarted,
   setSeconds,
   setStarted,
-  syncView,
+  subscribeStarted,
 } from "~/TimeData";
 import TimeText from "~/timer/TimeText";
 import * as styles from "./Timer.scss";
 
 const Reset = createElement("button", (el) => {
   el.className = spaces(styles.btn, styles.reset);
-  el.addEventListener("click", () => {
-    setSeconds(900);
-    syncView();
-  });
+  el.addEventListener("click", () => setSeconds(900));
 });
 
 const Trigger = createElement("button", (el) => {
@@ -26,8 +23,6 @@ const Trigger = createElement("button", (el) => {
       let key: number | null = null;
       const stop = () => {
         setStarted(false);
-        Reset.disabled = false;
-        Trigger.className = spaces(styles.btn, styles.start);
         clearInterval(key);
       };
       return () => {
@@ -35,20 +30,22 @@ const Trigger = createElement("button", (el) => {
           stop();
         } else {
           setStarted(true);
-          Reset.disabled = true;
-          Trigger.className = spaces(styles.btn, styles.pause);
           key = window.setInterval(() => {
             const sec = getSeconds() - 1;
             setSeconds(sec);
             if (sec < 1) {
               stop();
             }
-            syncView();
           }, 1000);
         }
       };
     })()
   );
+});
+
+subscribeStarted((started) => {
+  Reset.disabled = started;
+  Trigger.className = spaces(styles.btn, started ? styles.start : styles.pause);
 });
 
 export default createElement("section", (el) => {

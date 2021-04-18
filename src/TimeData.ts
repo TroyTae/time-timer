@@ -1,24 +1,11 @@
 import { setTimeText } from "./timer/TimeText";
 import { draw } from "./clock/RedCircle";
+import { createObserver } from "noliter";
 
-let modified = false;
-let started = false;
+const [isModified, setModified] = createObserver(false);
+const [isStarted, setStarted, subscribeStarted] = createObserver(false);
 let degree = 270;
 let seconds = 900;
-
-export function isModified() {
-  return modified;
-}
-export function setModified(isModified: boolean) {
-  modified = isModified;
-}
-
-export function isStarted() {
-  return started;
-}
-export function setStarted(isStarted: boolean) {
-  started = isStarted;
-}
 
 export function getDegree() {
   return degree;
@@ -35,7 +22,4 @@ export function setSeconds(sec: number) {
   degree = 360 - sec / 10;
 }
 
-export function syncView() {
-  setTimeText(seconds);
-  draw(degree);
-}
+export { isModified, setModified, isStarted, setStarted, subscribeStarted };
