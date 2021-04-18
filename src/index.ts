@@ -2,6 +2,7 @@ import { createElement } from "noliter";
 import Clock from "~/clock/Clock";
 import RedCircle from "~/clock/RedCircle";
 import Timer from "~/timer/Timer";
+import { setSeconds } from "~/TimeData";
 import * as styles from "./index.scss";
 
 document.body.appendChild(
@@ -18,9 +19,10 @@ document.body.appendChild(
   })
 );
 
-function init() {
+function resize() {
   RedCircle.width = RedCircle.parentElement.clientWidth;
   RedCircle.height = RedCircle.parentElement.clientHeight;
 }
-window.addEventListener("resize", init);
-init();
+window.addEventListener("resize", resize);
+resize();
+setSeconds(900);

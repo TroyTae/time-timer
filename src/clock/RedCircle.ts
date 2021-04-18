@@ -1,5 +1,11 @@
 import { createElement } from "noliter";
-import { setDegree, isModified, setModified, isStarted } from "~/TimeData";
+import {
+  setDegree,
+  isModified,
+  setModified,
+  isStarted,
+  subscribeDegree,
+} from "~/TimeData";
 import * as styles from "./RedCircle.scss";
 
 const favicon = createElement("link", (link) => {
@@ -65,7 +71,7 @@ const RedCircle = createElement("canvas", (el) => {
 });
 const context = RedCircle.getContext("2d");
 
-export function draw(degree: number) {
+subscribeDegree((degree) => {
   const w = RedCircle.width;
   const h = RedCircle.height;
   const cx = w / 2;
@@ -80,6 +86,6 @@ export function draw(degree: number) {
   context.fill();
 
   favicon.href = RedCircle.toDataURL();
-}
+});
 
 export default RedCircle;
