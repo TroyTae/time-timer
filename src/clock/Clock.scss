@@ -34,16 +34,52 @@ $min-font-size: 4;
   @media (max-aspect-ratio: 1/1) {
     font-size: $min-font-size + vw;
   }
-  &.m0 { top: 0; left: 48.75%; }
-  &.m5 { top: 6%; left: 30%; }
-  &.m10 { top: 22.5%; left: 14%; }
-  &.m15 { top: 46.5%; left: 8%; }
-  &.m20 { top: 70.5%; left: 13%; }
-  &.m25 { top: 88%; left: 28%; }
-  &.m30 { top: 93.5%; left: 48.75%; }
-  &.m35 { top: 88%; left: 68%; }
-  &.m40 { top: 70.5%; left: 82%; }
-  &.m45 { top: 46.5%; left: 87%; }
-  &.m50 { top: 22.5%; left: 82%; }
-  &.m55 { top: 6%; left: 68%; }
+  &.m5 {
+    top: 6%;
+    left: 30%;
+  }
+  &.m10 {
+    top: 22.5%;
+    left: 14%;
+  }
+  &.m15 {
+    top: 46.5%;
+    left: 8%;
+  }
+  &.m20 {
+    top: 70.5%;
+    left: 13%;
+  }
+  &.m25 {
+    top: 88%;
+    left: 28%;
+  }
+  &.m30 {
+    top: 93.5%;
+    left: 48.75%;
+  }
+  &.m35 {
+    top: 88%;
+    left: 68%;
+  }
+  &.m40 {
+    top: 70.5%;
+    left: 82%;
+  }
+  &.m45 {
+    top: 46.5%;
+    left: 87%;
+  }
+  &.m50 {
+    top: 22.5%;
+    left: 82%;
+  }
+  &.m55 {
+    top: 6%;
+    left: 68%;
+  }
+  &.m60 {
+    top: 0;
+    left: 48.75%;
+  }
 }

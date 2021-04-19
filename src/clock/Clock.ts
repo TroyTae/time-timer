@@ -12,7 +12,7 @@ export default createElement("section", (el) => {
       el.appendChild(RedCircle);
     }),
     ...[...Array(12)]
-      .map((_, i) => i * 5)
+      .map((_, i) => (i + 1) * 5)
       .map((min) =>
         createElement("button", (el) => {
           el.textContent = min.toString();
