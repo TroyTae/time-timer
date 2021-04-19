@@ -1,10 +1,10 @@
 import { createElement } from "noliter";
 import {
-  setDegree,
   isModified,
   setModified,
   isStarted,
-  subscribeDegree,
+  setSeconds,
+  subscribeSeconds,
 } from "~/TimeData";
 import * as styles from "./RedCircle.scss";
 
@@ -25,18 +25,11 @@ function getRadian(degree: number) {
   return (Math.PI / 180) * degree;
 }
 
-function getTanDegree(x: number, y: number) {
-  return (Math.atan(y / x) * 180) / Math.PI;
-}
-
 function drawWithCoordinate(x: number, y: number) {
   if (isModified() && !isStarted()) {
-    const degree = getTanDegree(x, y);
-    if ((x < 0 && 0 <= y) || (x < 0 && y < 0)) {
-      setDegree(degree + 270);
-    } else {
-      setDegree(degree + 90);
-    }
+    const degree = (Math.atan(y / x) * 180) / Math.PI;
+    const isPos = (x < 0 && 0 <= y) || (x < 0 && y < 0);
+    setSeconds(Math.round(((isPos ? 90 : 270) - degree) * 10));
   }
 }
 
@@ -71,7 +64,8 @@ const RedCircle = createElement("canvas", (el) => {
 });
 const context = RedCircle.getContext("2d");
 
-subscribeDegree((degree) => {
+subscribeSeconds((seconds) => {
+  const degree = 360 - seconds / 10;
   const w = RedCircle.width;
   const h = RedCircle.height;
   const cx = w / 2;

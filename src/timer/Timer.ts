@@ -45,7 +45,7 @@ const Trigger = createElement("button", (el) => {
 
 subscribeStarted((started) => {
   Reset.disabled = started;
-  Trigger.className = spaces(styles.btn, started ? styles.start : styles.pause);
+  Trigger.className = spaces(styles.btn, started ? styles.pause : styles.start);
 });
 
 export default createElement("section", (el) => {
