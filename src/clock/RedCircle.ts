@@ -73,16 +73,16 @@ subscribeSeconds((seconds) => {
 
   context.clearRect(0, 0, w, h);
   context.beginPath();
-  context.arc(cx, cy, cx, getRadian(270), getRadian(degree - 90), true);
-  context.lineTo(cx, cy);
-  context.closePath();
-  context.fillStyle = "#E31936";
-  context.fill();
-  context.beginPath();
   context.arc(cx, cy, cx, getRadian(270), getRadian(degree - 90));
   context.lineTo(cx, cy);
   context.closePath();
   context.fillStyle = "#FFF";
+  context.fill();
+  context.beginPath();
+  context.arc(cx, cy, cx, getRadian(270), getRadian(degree - 90), true);
+  context.lineTo(cx, cy);
+  context.closePath();
+  context.fillStyle = "#E31936";
   context.fill();
 
   favicon.href = RedCircle.toDataURL();
