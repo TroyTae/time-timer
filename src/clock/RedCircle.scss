@@ -1,5 +1,14 @@
+@use '../variable' as v;
+
+$clock-size: 70;
+
 #canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
+  margin: 6.5% auto;
+  width: $clock-size + vh;
+  height: $clock-size + vh;
+  @media (max-aspect-ratio: 1/1) {
+    width: $clock-size + vw;
+    height: $clock-size + vw;
+  }
 }

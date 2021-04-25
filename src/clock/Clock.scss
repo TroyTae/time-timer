@@ -1,24 +1,10 @@
 @use '../variable' as v;
 
-$clock-size: 70;
 $min-font-size: 4;
 
 #clock {
   position: relative;
   overflow: hidden;
-}
-
-#circle {
-  position: relative;
-  margin: 6.5% auto;
-  border-radius: 50%;
-  width: $clock-size + vh;
-  height: $clock-size + vh;
-  background: v.$white;
-  @media (max-aspect-ratio: 1/1) {
-    width: $clock-size + vw;
-    height: $clock-size + vw;
-  }
 }
 
 .min {

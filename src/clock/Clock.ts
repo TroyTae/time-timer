@@ -7,10 +7,7 @@ import * as styles from "./Clock.scss";
 export default createElement("section", (el) => {
   el.id = styles.clock;
   el.append(
-    createElement("div", (el) => {
-      el.id = styles.circle;
-      el.appendChild(RedCircle);
-    }),
+    RedCircle,
     ...[...Array(12)]
       .map((_, i) => (i + 1) * 5)
       .map((min) =>

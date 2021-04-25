@@ -20,8 +20,8 @@ document.body.appendChild(
 );
 
 function resize() {
-  RedCircle.width = RedCircle.parentElement.clientWidth;
-  RedCircle.height = RedCircle.parentElement.clientHeight;
+  RedCircle.width = RedCircle.clientWidth;
+  RedCircle.height = RedCircle.clientHeight;
   setSeconds(getSeconds());
 }
 window.addEventListener("resize", resize);
