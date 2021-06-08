@@ -1,3 +1,4 @@
+import "./TimeText.scss";
 import { createElement } from "noliter";
 import { subscribeSeconds } from "~/TimeData";
 

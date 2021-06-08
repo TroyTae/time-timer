@@ -1,8 +1,9 @@
+import "./index.scss";
 import { createElement } from "noliter";
+import { getSeconds, setSeconds } from "~/TimeData";
 import Clock from "~/clock/Clock";
 import RedCircle from "~/clock/RedCircle";
 import Timer from "~/timer/Timer";
-import { getSeconds, setSeconds } from "~/TimeData";
 
 document.body.appendChild(
   createElement("article", (article) => {

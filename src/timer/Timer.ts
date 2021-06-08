@@ -1,3 +1,4 @@
+import "./Timer.scss";
 import spaces from "one-spaces";
 import { createElement } from "noliter";
 import {

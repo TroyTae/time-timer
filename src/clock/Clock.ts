@@ -1,3 +1,4 @@
+import "./Clock.scss";
 import spaces from "one-spaces";
 import { createElement } from "noliter";
 import { isStarted, setSeconds } from "~/TimeData";

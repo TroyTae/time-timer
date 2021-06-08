@@ -1,3 +1,4 @@
+import "./RedCircle.scss";
 import { createElement } from "noliter";
 import {
   isModified,
