@@ -1,15 +1,15 @@
 import "./index.scss";
-import { createElement } from "noliter";
+import { createArticle, createHeader } from "noliter";
 import { getSeconds, setSeconds } from "~/TimeData";
 import Clock from "~/clock/Clock";
 import RedCircle from "~/clock/RedCircle";
 import Timer from "~/timer/Timer";
 
 document.body.appendChild(
-  createElement("article", (article) => {
+  createArticle((article) => {
     article.id = "app";
     article.append(
-      createElement("header", (header) => {
+      createHeader((header) => {
         header.id = "header";
         header.textContent = "Time Timer";
       }),

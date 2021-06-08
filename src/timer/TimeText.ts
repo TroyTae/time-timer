@@ -1,8 +1,8 @@
 import "./TimeText.scss";
-import { createElement } from "noliter";
+import { createSpan } from "noliter";
 import { subscribeSeconds } from "~/TimeData";
 
-const TimeText = createElement("span", (el) => (el.id = "timeText"));
+const TimeText = createSpan((el) => (el.id = "timeText"));
 
 function twoDigits(seconds: number) {
   return `0${Math.floor(seconds)}`.slice(-2);

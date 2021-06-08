@@ -1,5 +1,5 @@
 import "./RedCircle.scss";
-import { createElement } from "noliter";
+import { createLink, createCanvas } from "noliter";
 import {
   isModified,
   setModified,
@@ -8,18 +8,10 @@ import {
   subscribeSeconds,
 } from "~/TimeData";
 
-const favicon = createElement("link", (link) => {
+const favicon = createLink((link) => {
   link.rel = "shortcut icon";
+  document.head.appendChild(link);
 });
-document.head.appendChild(favicon);
-
-function startHandling() {
-  setModified(true);
-}
-
-function stopHandling() {
-  setModified(false);
-}
 
 function getRadian(degree: number) {
   return (Math.PI / 180) * degree;
@@ -28,12 +20,12 @@ function getRadian(degree: number) {
 function drawWithCoordinate(x: number, y: number) {
   if (isModified() && !isStarted()) {
     const degree = (Math.atan(y / x) * 180) / Math.PI;
-    const isPos = (x < 0 && 0 <= y) || (x < 0 && y < 0);
-    setSeconds(Math.round(((isPos ? 90 : 270) - degree) * 10));
+    const isPositive = (x < 0 && 0 <= y) || (x < 0 && y < 0);
+    setSeconds(Math.round(((isPositive ? 90 : 270) - degree) * 10));
   }
 }
 
-const RedCircle = createElement("canvas", (el) => {
+const RedCircle = createCanvas((el) => {
   el.id = "canvas";
   el.addEventListener(
     "mousemove",
@@ -56,11 +48,11 @@ const RedCircle = createElement("canvas", (el) => {
     },
     { passive: true }
   );
-  el.addEventListener("mousedown", startHandling);
-  el.addEventListener("touchstart", startHandling);
-  el.addEventListener("mouseup", stopHandling);
-  el.addEventListener("mouseleave", stopHandling);
-  el.addEventListener("touchend", stopHandling);
+  el.addEventListener("mousedown", () => setModified(true));
+  el.addEventListener("touchstart", () => setModified(true));
+  el.addEventListener("mouseup", () => setModified(false));
+  el.addEventListener("mouseleave", () => setModified(false));
+  el.addEventListener("touchend", () => setModified(false));
 });
 const context = RedCircle.getContext("2d");
 

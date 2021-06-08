@@ -1,6 +1,6 @@
 import "./Timer.scss";
 import spaces from "one-spaces";
-import { createElement } from "noliter";
+import { createButton, createSection } from "noliter";
 import {
   getSeconds,
   isStarted,
@@ -10,12 +10,12 @@ import {
 } from "~/TimeData";
 import TimeText from "~/timer/TimeText";
 
-const Reset = createElement("button", (el) => {
+const Reset = createButton((el) => {
   el.className = spaces("btn", "reset");
   el.addEventListener("click", () => setSeconds(900));
 });
 
-const Trigger = createElement("button", (el) => {
+const Trigger = createButton((el) => {
   el.className = spaces("btn", "start");
   el.addEventListener(
     "click",
@@ -48,7 +48,7 @@ subscribeStarted((started) => {
   Trigger.className = spaces("btn", started ? "pause" : "start");
 });
 
-export default createElement("section", (el) => {
+export default createSection((el) => {
   el.id = "timer";
   el.append(Reset, TimeText, Trigger);
 });
