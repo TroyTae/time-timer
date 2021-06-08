@@ -6,7 +6,6 @@ import {
   setSeconds,
   subscribeSeconds,
 } from "~/TimeData";
-import * as styles from "./RedCircle.scss";
 
 const favicon = createElement("link", (link) => {
   link.rel = "shortcut icon";
@@ -34,7 +33,7 @@ function drawWithCoordinate(x: number, y: number) {
 }
 
 const RedCircle = createElement("canvas", (el) => {
-  el.id = styles.canvas;
+  el.id = "canvas";
   el.addEventListener(
     "mousemove",
     (e) =>

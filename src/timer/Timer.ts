@@ -8,15 +8,14 @@ import {
   subscribeStarted,
 } from "~/TimeData";
 import TimeText from "~/timer/TimeText";
-import * as styles from "./Timer.scss";
 
 const Reset = createElement("button", (el) => {
-  el.className = spaces(styles.btn, styles.reset);
+  el.className = spaces("btn", "reset");
   el.addEventListener("click", () => setSeconds(900));
 });
 
 const Trigger = createElement("button", (el) => {
-  el.className = spaces(styles.btn, styles.start);
+  el.className = spaces("btn", "start");
   el.addEventListener(
     "click",
     (() => {
@@ -45,10 +44,10 @@ const Trigger = createElement("button", (el) => {
 
 subscribeStarted((started) => {
   Reset.disabled = started;
-  Trigger.className = spaces(styles.btn, started ? styles.pause : styles.start);
+  Trigger.className = spaces("btn", started ? "pause" : "start");
 });
 
 export default createElement("section", (el) => {
-  el.id = styles.timer;
+  el.id = "timer";
   el.append(Reset, TimeText, Trigger);
 });
